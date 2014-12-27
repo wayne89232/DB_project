@@ -1,4 +1,5 @@
 node_modules/*
+setting/db.js
 .DS_Store
 
 # webstorm setting
