@@ -1,4 +1,4 @@
-var local = require("../setting/local");
+var local = require("../setting/db");
 var Sequelize = require('sequelize');
 var sequelize = new Sequelize(
 		local.model.mysql.database,

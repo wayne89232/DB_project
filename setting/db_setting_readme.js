@@ -17,6 +17,7 @@ module.exports = {
 			password: "", //password
 			options : {
 				host    : "localhost",  //localhost suggested
+				dialect: 'mysql',
 				logging : false
 			}
 		}
