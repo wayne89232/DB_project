@@ -7,26 +7,39 @@ var sequelize = new Sequelize(
 		local.model.mysql.options
 	);
 
-
-var Team = require('./models/team').Team(Sequelize,sequelize);
-var Umpire = require('./models/umpire').Umpire(Sequelize,sequelize);
-var School = require('./models/school').School(Sequelize,sequelize);
-var Prize = require('./models/prize').Prize(Sequelize,sequelize);
-var Player = require('./models/player').Player(Sequelize,sequelize);
-var Pitching_record = require('./models/pitching_record').Pitching_record(Sequelize,sequelize);
-var League = require('./models/league').League(Sequelize,sequelize);
-var Injury = require('./models/injury').Injury(Sequelize,sequelize);
-var Games = require('./models/games').Games(Sequelize,sequelize);
-var Funder = require('./models/funder').Funder(Sequelize,sequelize);
-var Field = require('./models/field').Field(Sequelize,sequelize);
-var Coach = require('./models/coach').Coach(Sequelize,sequelize);
-var City = require('./models/city').City(Sequelize,sequelize);
-var Broadcast = require('./models/broadcast').Broadcast(Sequelize,sequelize);
-var Ban = require('./models/ban').Ban(Sequelize,sequelize);
-var B_F_record = require('./models/B_F_record').B_F_record(Sequelize,sequelize);
-
+var Team = require('./models').Team;
+var Umpire = require('./models').Umpire;
+var School = require('./models').School;
+var Prize = require('./models').Prize;
+var Player = require('./models').Player;
+var Pitching_record = require('./models').Pitching_record;
+var League = require('./models').League;
+var Injury = require('./models').Injury;
+var Games = require('./models').Games;
+var Funder = require('./models').Funder;
+var Field = require('./models').Field;
+var Coach = require('./models').Coach;
+var City = require('./models').City;
+var Broadcast = require('./models').Broadcast;
+var Ban = require('./models').Ban;
+var B_F_record = require('./models').B_F_record;
 
 
-sequelize.sync({force:true}).complete(function(err){
-	console.log(err);
-});
+
+
+Team.sync({force: true});
+Umpire.sync({force: true});
+School.sync({force: true});
+Prize.sync({force: true});
+Player.sync({force: true});
+Pitching_record.sync({force: true});
+League.sync({force: true});
+Injury.sync({force: true});
+Games.sync({force: true});
+Funder.sync({force: true});
+Field.sync({force: true});
+Coach.sync({force: true});
+City.sync({force: true});
+Broadcast.sync({force: true});
+Ban.sync({force: true});
+B_F_record.sync({force: true});
