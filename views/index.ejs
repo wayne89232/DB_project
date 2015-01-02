@@ -23,12 +23,20 @@
     <script src="../js/controllers.js"></script>
     <script src="../js/filters.js"></script>
     <script src="../js/directives.js"></script>
+    <script type="text/javascript" src="http://konami-js.googlecode.com/svn/trunk/konami.js"></script>
     <noscript>
       <link rel="stylesheet" href="css/app.css"/>
       <link rel="stylesheet" href="css/skel.css" />
       <link rel="stylesheet" href="css/style.css" />
       <link rel="stylesheet" href="css/style-desktop.css" />
     </noscript>
+    <script type="text/javascript">
+        var egg = new Konami();
+        egg.code = function(){ 
+            alert('Say hi!'); 
+        }
+        egg.load();
+    </script>
   </head>
   <body class="homepage" ng-controller="AppCtrl">
 
