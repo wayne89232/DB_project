@@ -1,7 +1,5 @@
 'use strict';
 
-// Declare app level module which depends on filters, and services
-
 angular.module('myApp', [
   'myApp.controllers',
   'myApp.filters',
@@ -9,10 +7,15 @@ angular.module('myApp', [
   'myApp.directives'
 ]).
 config(function ($routeProvider, $locationProvider) {
+  $locationProvider.html5Mode(true);
   $routeProvider.
+    when('/home', {
+      templateUrl: 'partials/add_league',
+      controller: 'AppCtrl'
+    }).
     when('/view1', {
-      templateUrl: 'partials/partial1',
-      controller: 'MyCtrl1'
+      templateUrl: 'partials/add_league',
+      controller: 'League'
     }).
     when('/view2', {
       templateUrl: 'partials/partial2',
@@ -23,8 +26,8 @@ config(function ($routeProvider, $locationProvider) {
       controller: 'MyCtrl2'
     }).
     otherwise({
-      redirectTo: '/view1'
+      redirectTo: '/'
     });
 
-  $locationProvider.html5Mode(true);
+  
 });

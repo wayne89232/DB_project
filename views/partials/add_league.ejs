@@ -4,56 +4,19 @@
 
     <form action="" class="ui form">
       <div class="field">
-        <label><%= __('Username') %></label>
-        <input type="text" ng-model="account">
-      </div>
-
-      <div class="field">
-        <label><%= __('Password') %></label>
-        <input type="password" ng-model="password">
-      </div>
-
-      <div class="field">
-        <label><%= __('Name') %></label>
         <input type="text" ng-model="name">
       </div>
 
       <div class="field">
-        <label><%= __('Gender') %></label>
-        <select ng-model="gender">
-          <option value="男"><%= __('Male') %></option>
-          <option value="女"><%= __('Female') %></option>
-        </select>
+        <input type="password" ng-model="city">
       </div>
 
       <div class="field">
-        <label><%= __('School') %></label>
-        <input type="text" ng-model="school">
+        <input type="text" ng-model="year">
       </div>
 
-      <div class="field">
-        <label><%= __('Department') %></label>
-        <input type="text" ng-model="department">
-      </div>
 
-      <div class="field">
-        <label><%= __('Grade') %></label>
-        <select ng-model="grade">
-          <option value="大一"><%= __('Freshman') %></option>
-          <option value="大二"><%= __('Sophomore') %></option>
-          <option value="大三"><%= __('Junior') %></option>
-          <option value="大四"><%= __('Senior') %></option>
-          <option value="碩一"><%= __('1st-master') %></option>
-          <option value="碩二"><%= __('2nd-master') %></option>
-          <option value="博班"><%= __('PhD') %></option>
-          <option value="畢業"><%= __('Graduated') %></option>
-        </select>
-      </div>
-
-      <button class="ui button" ng-click="upload()" ><%=__('Upload Photo')%></button>
-	    <img ng-show="photo" ng-src="{{photo}}" class="img-responsive" alt="Responsive image">
-
-      <button class="ui button" ng-click="signup()"><%= __('Signup') %></button>
+      <button class="ui button" ng-click="add_league()"></button>
     </form>
 
     </div>
