@@ -1,27 +1,21 @@
 'use strict';
 
-/* Controllers */
+angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function ($scope, $http) {
 
-angular.module('myApp.controllers', []).
-  controller('AppCtrl', function ($scope, $http) {
-
-    $http({
-      method: 'GET',
-      url: '/api/name'
-    }).
-    success(function (data, status, headers, config) {
-      $scope.name = data.name;
-    }).
-    error(function (data, status, headers, config) {
-      $scope.name = 'Error!';
-    });
-
-  }).
-  controller('MyCtrl1', function ($scope) {
+}).controller('League', function ($scope, $http, $location, $window) {
     // write Ctrl here
-
-  }).
-  controller('MyCtrl2', function ($scope) {
-    // write Ctrl here
-
-  });
+    $scope.add_league = function(){
+        var data = {
+            name: $scope.name, 
+            city: 1,
+            year: $scope.year
+        };
+        $http({
+            method: "POST", 
+            url: '/api/add_league', 
+            data: data
+        }).then(function(result){
+            $location.path('/home');
+        });
+    }
+});
