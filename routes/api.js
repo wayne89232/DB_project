@@ -29,7 +29,7 @@ exports.add_team = function(req, res){
 			// });
 		}
 		else{
-			console.log("Success on adding team" + team.team_name + " not in any league");
+			console.log("Success on adding team " + team.team_name + " not in any league");
 		}
 	});
 	res.json({
