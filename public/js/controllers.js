@@ -7,7 +7,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     $scope.add_league = function(){
         var data = {
             name: $scope.name, 
-            city: 1,
+            city: $scope.city,
             year: $scope.year
         };
         $http({
@@ -15,7 +15,8 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
             url: '/api/add_league', 
             data: data
         }).then(function(result){
-            $location.path('/home');
+            $window.location.reload();
+            $location.path('/view1');
         });
     }
 });
