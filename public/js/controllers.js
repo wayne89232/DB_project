@@ -9,7 +9,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
         $scope.leagues = leagues.msg;
     });
     $scope.add_league = function(){
-        if($scope.name != null && $scope.city != null && $scope.yaer != null ){
+        if($scope.name != null && $scope.city != null && $scope.year != null ){
             var data = {
                 name: $scope.name, 
                 city: $scope.city,
@@ -22,6 +22,26 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
             }).then(function(result){
                 $window.location.reload();
                 $location.path('/League');
+            });
+        }
+        else{
+            alert("Fill in all entities!");
+        }
+    }
+}).controller('Team', function ($scope, $http, $location, $window) {
+    $scope.add_team = function(){
+        if($scope.name != null && $scope.school != null){
+            var data = {
+                name: $scope.name, 
+                school: $scope.school
+            };
+            $http({
+                method: "POST", 
+                url: '/api/add_team', 
+                data: data
+            }).then(function(result){
+                $window.location.reload();
+                $location.path('/Team');
             });
         }
         else{

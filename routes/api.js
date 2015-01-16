@@ -36,7 +36,9 @@ exports.add_league = function(req, res){
 exports.add_team = function(req, res){
 	School.find({ where: { school_name: req.body.school } }).then(function(result){
 		if(_.size(result) == 0){
-			School.create({ school_name: req.body.school, city_id: req.body.city}).then(function(result2){
+			School.create({ 
+				school_name: req.body.school
+			}).then(function(result2){
 				Team.create({
 					team_name: req.body.name,
 					school_id: result2.school_id
