@@ -12,3 +12,4 @@ exports.list_league = function(req, res){
 		res.json({ msg: leagues });
 	});
 }
+
