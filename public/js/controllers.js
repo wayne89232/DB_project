@@ -4,6 +4,11 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
 
 }).controller('League', function ($scope, $http, $location, $window) {
     // write Ctrl here
+    console.log("hee");
+    $scope.leagues = [];
+    $http({ method:"GET", url:'/league/list_league' }).success(function(leagues){
+        $scope.leagues = leagues.msg;
+    });
     $scope.add_league = function(){
         var data = {
             name: $scope.name, 
@@ -16,7 +21,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
             data: data
         }).then(function(result){
             $window.location.reload();
-            $location.path('/view1');
+            $location.path('/League');
         });
     }
 });

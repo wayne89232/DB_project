@@ -10,6 +10,7 @@ var express = require('express'),
   morgan = require('morgan'),
   routes = require('./routes'),
   api = require('./routes/api'),
+  league = require('./routes/league'),
   http = require('http'),
   path = require('path');
 
@@ -53,7 +54,7 @@ app.get('/partials/:name', routes.partials);
 
 //functions
 app.post('/api/add_league', api.add_league);
-
+app.get('/league/list_league', league.list_league);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);

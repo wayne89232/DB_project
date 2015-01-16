@@ -23,7 +23,10 @@ var City = require('./models').City;
 var Broadcast = require('./models').Broadcast;
 var Ban = require('./models').Ban;
 var B_F_record = require('./models').B_F_record;
-
+var Coach_team =  require('./models').Coach_team;
+var Funder_team =  require('./models').Funder_team;
+var League_team =  require('./models').League_team;
+var Umpire_game =  require('./models').Umpire_game;
 
 
 
@@ -43,3 +46,7 @@ City.sync({force: true});
 Broadcast.sync({force: true});
 Ban.sync({force: true});
 B_F_record.sync({force: true});
+Coach_team.sync({force: true});
+Funder_team.sync({force: true});
+League_team.sync({force: true});
+Umpire_game.sync({force: true});
