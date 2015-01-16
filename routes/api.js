@@ -21,13 +21,13 @@ exports.add_league = function(req, res){
 			});
 		}
 		else{
-				League.create({
-					league_name: req.body.name,
-					city_id: result.city_id,
-					year: req.body.year
-				}).then(function(league){
-					res.json({ msg: "Success on adding league " + league.league_name });
-				});			
+			League.create({
+				league_name: req.body.name,
+				city_id: result.city_id,
+				year: req.body.year
+			}).then(function(league){
+				res.json({ msg: "Success on adding league " + league.league_name });
+			});			
 		}
 	});
 

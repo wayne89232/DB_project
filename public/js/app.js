@@ -10,10 +10,10 @@ config(function ($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
   $routeProvider.
     when('/home', {
-      templateUrl: 'partials/add_league',
+      templateUrl: 'partials/home',
       controller: 'AppCtrl'
     }).
-    when('/view1', {
+    when('/League', {
       templateUrl: 'partials/add_league',
       controller: 'League'
     }).
