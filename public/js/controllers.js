@@ -9,7 +9,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
         $scope.leagues = leagues.msg;
     });
     $scope.add_league = function(){
-        if($scope.name != null && $scope.city != null && $scope.yaer != null ){
+        if($scope.name != null && $scope.city != null && $scope.year != null ){
             var data = {
                 name: $scope.name, 
                 city: $scope.city,
