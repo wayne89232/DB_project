@@ -59,6 +59,7 @@ app.post('/api/add_league', api.add_league);
 app.post('/team/add_team', team.add_team);
 app.get('/team/list_team', team.list_team);
 app.get('/team/show_team/:team_id', team.show_team);
+app.get('/team/team_league/:team_id', team.team_league);
 app.post('/team/add_to_league/:team_id/:league_id', team.add_to_league);
 
 app.get('/league/list_league', league.list_league);

@@ -30,6 +30,18 @@ exports.add_to_league = function(req, res){
 	
 }
 
+exports.team_league = function(req, res){
+	League_team.findAll({ 
+		where: { team_id: req.params.team_id }, 
+		include: [League] 
+	}).then(function(result){
+		leagues = _.map(result, function(result){
+			return result.dataValues.League.dataValues; 
+		});
+		res.json({msg: leagues });
+	});
+}
+
 exports.add_team = function(req, res){
 	School.find({ where: { school_name: req.body.school } }).then(function(result){
 		if(_.size(result) == 0){

@@ -68,12 +68,16 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
         $scope.team_name = team.team_name;
     });
     $scope.leagues = [];
-    $http({ method:"GET", url:'/league/list_league' }).success(function(leagues){
-        $scope.leagues = leagues.msg;
-    });
+    $http({ method:"GET", url:'/team/team_league/' + $routeParams.id }).success(function(result){
+        $scope.par_leagues = result.msg;
+        $http({ method:"GET", url:'/league/list_league' }).success(function(leagues){
+            $scope.leagues = leagues.msg;
+        });
+    });    
     $scope.add_to_league = function(){
-    $http({ method:"POST", url:'/team/add_to_league/' + $routeParams.id + '/' + $scope.add_league }).success(function(result){
-        console.log(result.msg);
-    });        
+        $http({ method:"POST", url:'/team/add_to_league/' + $routeParams.id + '/' + $scope.add_league }).success(function(result){
+            console.log(result.msg);
+            $window.location.reload();
+        });        
     }
 });
