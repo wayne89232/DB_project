@@ -10,7 +10,7 @@ var Umpire = require('../models').Umpire;
 var B_F_record = require('../models').B_F_record;
 var Pitching_record = require('../models').Pitching_record;
 var Ban = require('../models').Ban;
-var Field = require('..models').Field;
+var Field = require('../models').Field;
 var _ = require('underscore');
 
 
