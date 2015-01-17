@@ -13,3 +13,8 @@ exports.list_league = function(req, res){
 	});
 }
 
+exports.show_league = function(req, res){
+	League.find({ where:{ league_id: req.params.league_id } }).then(function(result){
+		res.json({ msg: result.dataValues });
+	});
+}

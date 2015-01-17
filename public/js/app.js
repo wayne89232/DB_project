@@ -21,11 +21,15 @@ config(function ($routeProvider, $locationProvider) {
       templateUrl: 'partials/team',
       controller: 'Team'
     }).
-    when('/view3', {
-      templateUrl: 'partials/partial3',
-      controller: 'MyCtrl2'
+    when('/league/:id', {
+      templateUrl: 'partials/show_league',
+      controller: 'show_league'
     }).
-    otherwise({
+    when('/team/:id', {
+      templateUrl: 'partials/show_team',
+      controller: 'show_team'
+    })
+    .otherwise({
       redirectTo: '/'
     });
 

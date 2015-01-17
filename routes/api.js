@@ -40,30 +40,7 @@ exports.add_league = function(req, res){
 
 }
 
-exports.add_team = function(req, res){
-	School.find({ where: { school_name: req.body.school } }).then(function(result){
-		if(_.size(result) == 0){
-			School.create({ 
-				school_name: req.body.school
-			}).then(function(result2){
-				Team.create({
-					team_name: req.body.name,
-					school_id: result2.school_id
-				}).then(function(team){
-					res.json({ msg: "Success on adding team " + team.team_name });
-				});
-			});
-		}
-		else{
-			Team.create({
-				team_name: req.body.name,
-				school_id: result.school_id
-			}).then(function(team){
-				res.json({ msg: "Success on adding team " + team.team_name });
-			});			
-		}
-	});
-}
+
 
 exports.add_coach = function(req, res){
 	Team.find({ where: { team_name: req.body.team } }).then(function(result){
