@@ -28,4 +28,24 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
             alert("Fill in all entities!");
         }
     }
+}).controller('Team', function ($scope, $http, $location, $window) {
+    $scope.add_team = function(){
+        if($scope.name != null && $scope.school != null){
+            var data = {
+                name: $scope.name, 
+                school: $scope.school
+            };
+            $http({
+                method: "POST", 
+                url: '/api/add_team', 
+                data: data
+            }).then(function(result){
+                $window.location.reload();
+                $location.path('/Team');
+            });
+        }
+        else{
+            alert("Fill in all entities!");
+        }
+    }
 });

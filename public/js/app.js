@@ -17,9 +17,9 @@ config(function ($routeProvider, $locationProvider) {
       templateUrl: 'partials/add_league',
       controller: 'League'
     }).
-    when('/view2', {
-      templateUrl: 'partials/partial2',
-      controller: 'MyCtrl2'
+    when('/Team', {
+      templateUrl: 'partials/team',
+      controller: 'Team'
     }).
     when('/view3', {
       templateUrl: 'partials/partial3',

@@ -54,6 +54,7 @@ app.get('/partials/:name', routes.partials);
 
 //functions
 app.post('/api/add_league', api.add_league);
+app.post('/api/add_team', api.add_team);
 app.get('/league/list_league', league.list_league);
 
 // redirect all others to the index (HTML5 history)
