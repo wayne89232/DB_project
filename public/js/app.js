@@ -10,22 +10,26 @@ config(function ($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
   $routeProvider.
     when('/home', {
-      templateUrl: 'partials/add_league',
+      templateUrl: 'partials/home',
       controller: 'AppCtrl'
     }).
-    when('/view1', {
+    when('/League', {
       templateUrl: 'partials/add_league',
       controller: 'League'
     }).
-    when('/view2', {
-      templateUrl: 'partials/partial2',
-      controller: 'MyCtrl2'
+    when('/Team', {
+      templateUrl: 'partials/team',
+      controller: 'Team'
     }).
-    when('/view3', {
-      templateUrl: 'partials/partial3',
-      controller: 'MyCtrl2'
+    when('/league/:id', {
+      templateUrl: 'partials/show_league',
+      controller: 'show_league'
     }).
-    otherwise({
+    when('/team/:id', {
+      templateUrl: 'partials/show_team',
+      controller: 'show_team'
+    })
+    .otherwise({
       redirectTo: '/'
     });
 

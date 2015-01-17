@@ -10,6 +10,8 @@ var express = require('express'),
   morgan = require('morgan'),
   routes = require('./routes'),
   api = require('./routes/api'),
+  league = require('./routes/league'),
+  team = require('./routes/team'),
   http = require('http'),
   path = require('path');
 
@@ -53,6 +55,14 @@ app.get('/partials/:name', routes.partials);
 
 //functions
 app.post('/api/add_league', api.add_league);
+
+app.post('/team/add_team', team.add_team);
+app.get('/team/list_team', team.list_team);
+app.get('/team/show_team/:team_id', team.show_team);
+app.post('/team/add_to_league/:team_id/:league_id', team.add_to_league);
+
+app.get('/league/list_league', league.list_league);
+app.get('/league/show_league/:league_id', league.show_league);
 
 
 // redirect all others to the index (HTML5 history)

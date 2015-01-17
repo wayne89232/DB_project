@@ -93,3 +93,7 @@ exports.City = City;
 exports.Broadcast = Broadcast;
 exports.Ban = Ban;
 exports.B_F_record = B_F_record;
+exports.Coach_team = Coach_team;
+exports.Funder_team = Funder_team;
+exports.League_team = League_team;
+exports.Umpire_game = Umpire_game;
