@@ -28,6 +28,10 @@ config(function ($routeProvider, $locationProvider) {
     when('/team/:id', {
       templateUrl: 'partials/show_team',
       controller: 'show_team'
+    }).
+    when('/teat', {
+      templateUrl: 'partials/league',
+      controller: 'League'
     })
     .otherwise({
       redirectTo: '/'
