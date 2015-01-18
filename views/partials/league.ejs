@@ -26,15 +26,10 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
+					<tr ng-repeat="league in leagues">
+						<td ng-bind = "league.league_name"></td>
+						<td ng-bind = "league.city_id"></td>
+						<td ng-bind = "league.year"></td>
 					</tr>
 				</tbody>
 			</table>

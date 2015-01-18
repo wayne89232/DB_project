@@ -36,7 +36,7 @@ config(function ($routeProvider, $locationProvider) {
     .when('/teat', {
       templateUrl: 'partials/league',
       controller: 'League'
-    .otherwise({
+    }).otherwise({
       redirectTo: '/'
     });
 
