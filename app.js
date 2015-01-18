@@ -12,6 +12,7 @@ var express = require('express'),
   api = require('./routes/api'),
   league = require('./routes/league'),
   team = require('./routes/team'),
+  player = require('./routes/player'),
   http = require('http'),
   path = require('path');
 
@@ -65,6 +66,8 @@ app.post('/team/add_to_league/:team_id/:league_id', team.add_to_league);
 app.get('/league/list_league', league.list_league);
 app.get('/league/show_league/:league_id', league.show_league);
 
+app.post('/player/add_player', player.add_player);
+app.get('/player/list_player/:team_id', player.list_player);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);

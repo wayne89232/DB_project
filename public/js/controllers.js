@@ -67,17 +67,55 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
         var team = result.msg;
         $scope.team_name = team.team_name;
     });
+    $http({ method:"GET", url:'/player/list_player/' + $routeParams.id }).success(function(result){
+        console.log(result.msg);
+        $scope.players = result.msg;
+    });
+    $scope.enumOptions = ['P', 'C', "1B", "2B", "3B", "SS", "LF", "CF", "RF", "DH"];
+    $scope.enumOptions2 = ['L', 'R'];
     $scope.leagues = [];
     $http({ method:"GET", url:'/team/team_league/' + $routeParams.id }).success(function(result){
         $scope.par_leagues = result.msg;
         $http({ method:"GET", url:'/league/list_league' }).success(function(leagues){
             $scope.leagues = leagues.msg;
+            var temp = [];
+            _.map($scope.leagues, function(league){
+                if( _.pluck($scope.par_leagues, 'league_id').indexOf(league.league_id) == -1 ){ 
+                    temp.push(league);
+                }
+            });
+            $scope.leagues = temp;
         });
     });    
     $scope.add_to_league = function(){
-        $http({ method:"POST", url:'/team/add_to_league/' + $routeParams.id + '/' + $scope.add_league }).success(function(result){
-            console.log(result.msg);
-            $window.location.reload();
-        });        
+        if($scope.add_league != null){
+            $http({ method:"POST", url:'/team/add_to_league/' + $routeParams.id + '/' + $scope.add_league }).success(function(result){
+                console.log(result.msg);
+                $window.location.reload();
+            });
+        }
+        else{
+            alert("Select league to enter");
+        }        
+    }
+    $scope.add_player = function(){
+        if(($scope.player_name != null)&&($scope.position != null)){
+            var data = {
+                player_name: $scope.player_name, 
+                team_id: $routeParams.id, 
+                position: $scope.position, 
+                age: $scope.age, 
+                height: $scope.height, 
+                weight: $scope.weight, 
+                batting: $scope.batting   
+            };
+            $http({ method:"POST", url:'/player/add_player', data: data}).success(function(result){
+                $window.location.reload();
+            });        
+        }
+        else{
+            alert("Fill in name team position");
+        }
+        
     }
 });
