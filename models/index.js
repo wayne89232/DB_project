@@ -81,8 +81,6 @@ Pitching_record.belongsTo(Player, {foreignKey: 'player_id'});
 Player.hasMany(Ban, {foreignKey: 'player_id'});
 Ban.belongsTo(Player, {foreignKey: 'player_id'});
 
-City.hasMany(School, {foreignKey: 'city_id'});
-School.belongsTo(City, {foreignKey: 'city_id'});
 City.hasMany(Field, {foreignKey: 'city_id'});
 Field.belongsTo(City, {foreignKey: 'city_id'});
 
