@@ -39,13 +39,22 @@ Team.hasMany(Games, {foreignKey: 'team_id'});
 Games.belongsTo(Team, {foreignKey: 'away_team_id'});
 
 Coach.hasMany(Coach_team, {foreignKey: 'coach_id'});
+Coach_team.belongsTo(Coach, {foreignKey: 'coach_id'});
 Team.hasMany(Coach_team, {foreignKey: 'team_id'});
+Coach_team.belongsTo(Team, {foreignKey: 'team_id'});
 Funder.hasMany(Funder_team, {foreignKey: 'funder_id'});
+Funder_team.belongsTo(Funder, {foreignKey: 'funder_id'});
 Team.hasMany(Funder_team, {foreignKey: 'team_id'});
+Funder_team.belongsTo(Team, {foreignKey: 'team_id'});
 League.hasMany(League_team, {foreignKey: 'league_id'});
+League_team.belongsTo(League, {foreignKey: 'league_id'});
 Team.hasMany(League_team, {foreignKey: 'team_id'});
+League_team.belongsTo(Team, {foreignKey: 'team_id'});
 Umpire.hasMany(Umpire_game, {foreignKey: 'umpire_id'});
+Umpire_game.belongsTo(Umpire, {foreignKey: 'umpire_id'});
 Games.hasMany(Umpire_game, {foreignKey: 'game_id'});
+Umpire_game.belongsTo(Games, {foreignKey: 'game_id'});
+
 
 City.hasMany(League, {foreignKey: 'league_id'});
 League.belongsTo(City, {foreignKey: 'league_id'});
