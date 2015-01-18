@@ -24,7 +24,8 @@ Players:
         <button class="ui button" ng-click="add_to_league()">Go</button>
     </form>
 </div>
-<div class="ui teal segment">
+<button class="ui button" ng-click="reveal_add_player()">Add player</button>
+<div class="ui teal segment" ng-hide="player_add">
     <form action="" class="ui form">
         <div class="field">
             <span>Add Player</span>

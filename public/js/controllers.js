@@ -63,6 +63,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
         $scope.league_name = league.league_name;
     });
 }).controller('show_team', function ($scope, $http, $location, $window, $routeParams) {
+    $scope.player_add = true;
     $http({ method:"GET", url:'/team/show_team/' + $routeParams.id }).success(function(result){
         var team = result.msg;
         $scope.team_name = team.team_name;
@@ -90,7 +91,6 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     $scope.add_to_league = function(){
         if($scope.add_league != null){
             $http({ method:"POST", url:'/team/add_to_league/' + $routeParams.id + '/' + $scope.add_league }).success(function(result){
-                console.log(result.msg);
                 $window.location.reload();
             });
         }
@@ -117,5 +117,8 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
             alert("Fill in name team position");
         }
         
+    }
+    $scope.reveal_add_player = function(){
+        $scope.player_add = !($scope.player_add);
     }
 });
