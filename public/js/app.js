@@ -30,8 +30,8 @@ config(function ($routeProvider, $locationProvider) {
       controller: 'show_team'
     }).
     when('/teat', {
-      templateUrl: 'partials/league',
-      controller: 'League'
+      templateUrl: 'partials/teat',
+      directives: 'myApp.directives'
     })
     .otherwise({
       redirectTo: '/'
