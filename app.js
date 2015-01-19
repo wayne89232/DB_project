@@ -13,6 +13,7 @@ var express = require('express'),
   league = require('./routes/league'),
   team = require('./routes/team'),
   player = require('./routes/player'),
+  game = require('./routes/game'),
   http = require('http'),
   path = require('path');
 
@@ -62,6 +63,7 @@ app.get('/team/list_team', team.list_team);
 app.get('/team/show_team/:team_id', team.show_team);
 app.get('/team/team_league/:team_id', team.team_league);
 app.post('/team/add_to_league/:team_id/:league_id', team.add_to_league);
+app.get('/team/list_team_by_league/:league_id', team.list_team_by_league);
 
 app.get('/league/list_league', league.list_league);
 app.get('/league/show_league/:league_id', league.show_league);
@@ -73,6 +75,8 @@ app.get('/city/list_city', api.list_city);
 app.get('/school/list_school', api.list_school);
 app.get('/field/list_field', api.list_field);
 
+app.post('/game/add_game', game.add_game);
+app.get('/game/list_game', game.list_game);
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);
 

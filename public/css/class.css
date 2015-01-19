@@ -11,9 +11,19 @@
    margin: 0px auto;
 
 }
+.addingb
+{
+   padding-left: 15%;
+   width:1000px;
+}
 .Top
 {
   padding-top:0px;
+}
+.mid
+{
+   margin: 0px auto;
+   padding-left: 15%;
 }
 .Homepage
 {
@@ -34,7 +44,7 @@
 }
 .partialleft
 {
-	margin-top:  1.5%;
+	margin-top:  1.5	%;
 	margin-left: 3%;
 	padding left: 0.5em;
 
@@ -49,4 +59,9 @@
   font-size:200%;
   font-weight: bold;
   color:#b1ddab;
+}
+.padleft
+{
+   margin-left:4%;
+   padding-left: 20%;
 }

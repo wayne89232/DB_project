@@ -28,15 +28,15 @@ var League_team = require('./league_team').League_team(Sequelize,sequelize);
 var Umpire_game = require('./umpire_game').Umpire_game(Sequelize,sequelize);
 
 //add some relations here
-/*
+
 Team.hasMany(Player, {foreignKey: 'team_id'});
 Player.belongsTo(Team, {foreignKey: 'team_id'});
 School.hasMany(Team, {foreignKey: 'school_id'});
 Team.belongsTo(School, {foreignKey: 'school_id'});
-Team.hasMany(Games, {foreignKey: 'team_id'});
-Games.belongsTo(Team, {foreignKey: 'home_team_id'});
-Team.hasMany(Games, {foreignKey: 'team_id'});
-Games.belongsTo(Team, {foreignKey: 'away_team_id'});
+// Team.hasMany(Games, {foreignKey: 'team_id'});
+// Games.belongsTo(Team, {foreignKey: 'home_team_id'});
+// Team.hasMany(Games, {foreignKey: 'team_id'});
+// Games.belongsTo(Team, {foreignKey: 'away_team_id'});
 
 Coach.hasMany(Coach_team, {foreignKey: 'coach_id'});
 Coach_team.belongsTo(Coach, {foreignKey: 'coach_id'});
@@ -80,10 +80,9 @@ Player.hasMany(Pitching_record, {foreignKey: 'player_id'});
 Pitching_record.belongsTo(Player, {foreignKey: 'player_id'});
 Player.hasMany(Ban, {foreignKey: 'player_id'});
 Ban.belongsTo(Player, {foreignKey: 'player_id'});
-
 City.hasMany(Field, {foreignKey: 'city_id'});
 Field.belongsTo(City, {foreignKey: 'city_id'});
-*/
+
 exports.Team = Team;
 exports.Umpire = Umpire;
 exports.School = School;

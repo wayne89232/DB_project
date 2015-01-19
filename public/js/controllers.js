@@ -136,4 +136,51 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     $scope.reveal_add_player = function(){
         $scope.player_add = !($scope.player_add);
     }
+}).controller('Game', function ($scope, $http, $location, $window, $routeParams) {
+    $scope.leagues = [];
+    $scope.games = [];
+    $scope.league_pick = true;
+    $http({ method:"GET", url:'/league/list_league' }).success(function(leagues){
+        $scope.leagues = leagues.msg;
+    });    
+    $http({ method:"GET", url:'/game/list_game' }).success(function(result){
+        $scope.games = result.msg;
+    });
+    $scope.league_change = function(){
+        $scope.league_pick = false;
+        $http({ method:"GET", url:'/team/list_team_by_league/' + $scope.in_league }).success(function(teams){
+            $scope.teams = teams.msg;
+        });            
+    }
+    $scope.add_game = function(){
+        if($scope.home_team == $scope.away_team){
+            alert("Teams should be different!");
+        }
+        else if($scope.home_team != null && $scope.away_team != null && 
+            $scope.home_team_score != null  && $scope.away_team_score != null){
+            var data = {
+                league_id: $scope.in_league,
+                home_team_id: $scope.home_team,
+                away_team_id: $scope.away_team,
+                field_id: $scope.field,
+                broadcast_id: $scope.broadcast,
+                home_team_score: $scope.home_team_score,
+                away_team_score: $scope.away_team_score
+            };
+            $http({
+                method: "POST", 
+                url: '/game/add_game', 
+                data: data
+            }).then(function(result){
+                $window.location.reload();
+                $location.path('/Game');
+            });
+        }
+        else{
+            alert("Fill in all entities!");
+        }
+    }
+    $scope.view = function(id){
+        $location.path('/league/'+id);
+    }
 });
