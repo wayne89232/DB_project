@@ -44,6 +44,15 @@ config(function ($routeProvider, $locationProvider) {
     when('/Field', {
       templateUrl: 'partials/field',
       controller: 'Field'
+    }).when('/Ban', {
+      templateUrl: 'partials/ban',
+      controller: 'Ban'
+    }).when('/Umpire', {
+      templateUrl: 'partials/umpire',
+      controller: 'Umpire'
+    }).when('/Broadcast', {
+      templateUrl: 'partials/broadcast',
+      controller: 'Broadcast'
     }).otherwise({
       redirectTo: '/'
     });

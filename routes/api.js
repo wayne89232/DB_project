@@ -11,6 +11,7 @@ var B_F_record = require('../models').B_F_record;
 var Pitching_record = require('../models').Pitching_record;
 var Ban = require('../models').Ban;
 var Field = require('../models').Field;
+var Broadcast = require('../models').Broadcast;
 var _ = require('underscore');
 
 
@@ -216,5 +217,32 @@ exports.list_city = function(req, res){
 			return result.dataValues; 
 		});
 		res.json({ msg: city });
+	});
+}
+
+exports.list_ban = function(req, res){
+	Ban.findAll().then(function(result){
+		ban = _.map(result, function(result){
+			return result.dataValues; 
+		});
+		res.json({ msg: ban });
+	});
+}
+
+exports.list_umpire = function(req, res){
+	Umpire.findAll().then(function(result){
+		umpire = _.map(result, function(result){
+			return result.dataValues; 
+		});
+		res.json({ msg: umpire });
+	});
+}
+
+exports.list_broadcast = function(req, res){
+	Broadcast.findAll().then(function(result){
+		broadcast = _.map(result, function(result){
+			return result.dataValues; 
+		});
+		res.json({ msg: broadcast });
 	});
 }
