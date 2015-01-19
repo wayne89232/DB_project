@@ -17,16 +17,20 @@
     		<table class="ui celled table ">
     			<thead>
     				<tr>
-    					<th>Name</th>
-    					<th>City</th>
-    					<th>Year</th>
+    					<th>Ban ID</th>
+    					<th>Player ID</th>
+    					<th>Game ID</th>
+    					<th>Game Num</th>
+    					<th>Description</th>
     				</tr>
     			</thead>
     			<tbody>
-					<tr ng-repeat="league in leagues">
-						<td ng-bind = "league.league_name"></td>
-						<td ng-bind = "league.city_id"></td>
-						<td ng-bind = "league.year"></td>
+					<tr ng-repeat="ban in bans">
+						<td ng-bind = "ban.ban_id"></td>
+						<td ng-bind = "ban.player_id"></td>
+						<td ng-bind = "ban.game_id"></td>
+						<td ng-bind = "ban.game_num"></td>
+						<td ng-bind = "ban.description"></td>
 					</tr>
 				</tbody>
    			</table>

@@ -1,0 +1,25 @@
+<div class="ui page grid">
+    <div class="column padleft">
+        <div class="ui teal addingb">
+
+            <form action="" class="ui ">
+                <div class="field">
+                    Umpire Name<input type="text" ng-model="umpire">
+                </div>
+                 <div class="field">
+                    Position
+                    <select ng-model="position">
+                        <option value="">Select position</option>
+                        <option>HP</option>
+                        <option>1B</option>
+                        <option>2B</option>
+                        <option>3B</option>
+                        <option>LF</option>
+                        <option>RF</option>
+                    </select>
+                </div>
+                <button class="ui button" ng-click="add_umpire()">Send</button>
+            </form>
+        </div>
+    </div>
+</div>

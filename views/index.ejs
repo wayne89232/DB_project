@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/style-desktop.css" />-->
     <!-- <link rel="stylesheet" type="text/css" href="http://semantic-ui.com/dist/semantic.min.css"> -->
-
+    <link rel="stylesheet" href="css/class.css" />
     <script type="text/javascript">
         var egg = new Konami();
         egg.code = function(){ 
@@ -39,18 +39,15 @@
         //跳出ADD，UPDATE和DELETE的視窗
     </script>
   </head>
-  <body class="homepage" ng-controller="AppCtrl">
-
-      <header id="header">
-        <div class="logo container">
-          <div>
-            <h1><a href="index.html" id="logo">TXT</a></h1>
-            <p>A responsive site template by HTML5 UP</p>
-          </div>
-        </div>
+  <body ng-controller="AppCtrl">
+      <div class="Homepage">
+      <header id="topping" class="Homepage">
+            <div class="TitTBSD">
+             <p>Taiwan High School Baseball DataBase</p>
+            </div>  
       </header>
-
-      <nav id="nav" class="skel-layers-fixed">
+      </div>
+      <nav id="nav" class="skel-layers-fixed ">
         <ul>
           <li class="current"><a href="/home">Home</a></li>
           <li>
@@ -58,62 +55,48 @@
             <!--以每個League的名字做下拉式選單-->
             <!--表格可搜尋-->
           </li>
-          <li><a href="">Personnel</a>
-            <ul>
-            <li><a href="">Players</a></li>
-            <!--表格依照team name排序，可搜尋-->
-            <li><a href="/Team">Teams</a></li>
-            <!--表格點了可以跳到顯示選手的Record的頁面區段-->
-            </ul>
-          </li>
+          <li><a href="/Team">Personnel</a></li>
           <li>
             <a href="">Schedules & Records</a>
             <ul>
               <li><a href="/Game">Games</a></li>
               <!--Game的表格，點了可以跳到顯示選手的Record的頁面區段-->
               <!--Game表格可排序-->
-              <li><a href="">B_F records</a></li>
-              <!--表格依照game_id排序，可搜尋-->
-              <li><a href="">Pitching records</a></li>
-              <!--表格依照game_id排序，可搜尋-->
             </ul>
           </li>
           <li>
             <a href="">Details</a>
             <ul>
-              <li><a href="">School</a></li>
+              <li><a href="/School">School</a></li>
               <!--表格-->
-              <li><a href="">City</a></li>
+              <li><a href="/City">City</a></li>
               <!--表格-->
-              <li><a href="">Ban</a></li>
+              <li><a href="/Ban">Ban</a></li>
               <!--表格-->
-              <li><a href="">Field</a></li>
+              <li><a href="/Field">Field</a></li>
               <!--表格-->
-              <li><a href="">Umpire</a></li>
+              <li><a href="/Umpire">Umpire</a></li>
+              <li><a href="/Broadcast">Broadcasts</a></li>
               <!--以每個Umpire的名字做下拉式選單，點了可以跳到對應的頁面區段-->
             </ul>
           </li>
-          <li><a href="/teat">TEAT</a></li>
+          <li>
+            <a href="">ADD</a>
+            <ul>
+              <li><a href="/add_league">Add League</a></li>
+              <li><a href="/add_team">Add Team</a></li>
+              <li><a href="/add_school">Add School</a></li>
+              <li><a href="/add_city">Add City</a></li>
+              <li><a href="/add_ban">Add Ban</a></li>
+              <li><a href="/add_field">Add Field</a></li>
+              <li><a href="/add_umpire">Add Umpire</a></li>
+              <li><a href="/add_broadcast">Add Broadcasts</a></li>
+            </ul>
+          </li>
         </ul>
       </nav>
-    <div ng-view=""></div>
-    
-      <footer id="footer" class="container">
-        <div class="row 200%">
-          <div class="12u">
-              <section>
-                <h2 class="major"><span>What's this about?</span></h2>
-                <p>
-                  This is <strong>TXT</strong>, yet another free responsive site template designed by
-                  <a href="http://n33.co">AJ</a> for <a href="http://html5up.net">HTML5 UP</a>. It's released under the
-                  <a href="http://html5up.net/license/">Creative Commons Attribution</a> license so feel free to use it for
-                  whatever you're working on (personal or commercial), just be sure to give us credit for the design.
-                  That's basically it :)
-                </p>
-              </section>
-
-          </div>
-        </div>
-      </footer>
+      <div class = "container">
+        <div ng-view=""></div>
+      </div>
   </body>
 </html>

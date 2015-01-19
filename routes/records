@@ -30,7 +30,8 @@ exports.add_stat = function(req, res){
 			R: req.body.R,
 			SB: req.body.SB,
 			PSS: req.body.PSS	
-	}}).then(function(result){
+		}
+	}).then(function(result){
 		console.log(result)
 		result[0].updateAttributes({
 			position: req.body.position,
@@ -55,35 +56,32 @@ exports.add_stat = function(req, res){
 }
 
 exports.show_stat = function(req, res){
-	B_F_record.find({
+	B_F_record.findOrCreate({
 		where: {
 			game_id: req.params.game_id,
 			player_id: req.params.player_id		
+		},
+		default: {
+			game_id: req.params.game_id,
+			player_id: req.params.player_id,
 		}
 	}).then(function(result){
-		if(result == null){
-			res.json({msg: "No record"});
-		}
-		else{
-			res.json({msg: result.dataValues})
-		}
+		res.json({msg: result[0].dataValues});
 	});	
 }
 
 exports.show_stat2 = function(req, res){
-	console.log(123);
-	Pitching_record.find({
+	Pitching_record.findOrCreate({
 		where: {
 			game_id: req.params.game_id,
 			player_id: req.params.player_id		
+		},
+		default: {
+			game_id: req.params.game_id,
+			player_id: req.params.player_id,
 		}
 	}).then(function(result){
-		if(result == null){
-			res.json({msg: "No record"});			
-		}
-		else{
-			res.json({msg: result.dataValues})
-		}
+		res.json({msg: result[0].dataValues})
 	});	
 }
 
