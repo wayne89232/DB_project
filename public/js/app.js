@@ -14,11 +14,11 @@ config(function ($routeProvider, $locationProvider) {
       controller: 'AppCtrl'
     }).
     when('/League', {
-      templateUrl: 'partials/add_league',
+      templateUrl: 'partials/league',
       controller: 'League'
     }).
     when('/Team', {
-      templateUrl: 'partials/team',
+      templateUrl: 'partials/add_team',
       controller: 'Team'
     }).
     when('/league/:id', {
@@ -56,6 +56,14 @@ config(function ($routeProvider, $locationProvider) {
     .when('/Broadcast', {
       templateUrl: 'partials/broadcast',
       controller: 'Broadcast'
+    })
+    .when('/add_league', {
+      templateUrl: 'partials/add_league',
+      controller: 'League'
+    })
+    .when('/add_team', {
+      templateUrl: 'partials/add_team',
+      controller: 'Team'
     })
     .when('/add_school', {
       templateUrl: 'partials/add_school',

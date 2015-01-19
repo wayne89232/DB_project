@@ -20,7 +20,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
                 data: data
             }).then(function(result){
                 $window.location.reload();
-                $location.path('/League');
+                $location.path('/add_league');
             });
         }
         else{
