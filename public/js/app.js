@@ -61,9 +61,9 @@ config(function ($routeProvider, $locationProvider) {
       templateUrl: 'partials/add_league',
       controller: 'League'
     })
-    .when('/add_team', {
-      templateUrl: 'partials/add_team',
-      controller: 'Team'
+    .when('/game/:id', {
+      templateUrl: 'partials/game_stat',
+      controller: 'game_stat'
     })
     .when('/add_school', {
       templateUrl: 'partials/add_school',

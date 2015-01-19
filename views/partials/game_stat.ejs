@@ -1,0 +1,136 @@
+<div class="container">
+
+    <div style = "margin-left: 500px">
+        <span ng-bind="home_team.team_name"></span>
+        <span ng-bind="game.home_team_score"></span>
+        :
+        <span ng-bind="away_team.team_name"></span>
+        <span ng-bind="game.away_team_score"></span>  
+    </div>
+
+    <div style = "float: left">
+        <span ng-bind="home_team.team_name"></span>
+        <div ng-repeat="player in home_players">
+            <i ng-click="stats2(player.player_id)">icon</i>
+            <div ng-bind="player.player_name"  ng-click="stats(player.player_id)"></div>
+        </div>
+    </div>
+    <div class="" ng-hide="add_stat" style="float: left; width: 600px; margin-left: 200px">
+        
+        <div class="content content-right">
+            <form>
+                <div class="content content-right">
+                    <span>Batting & Fielding Record</span>
+                    <table class="ui celled table">
+                            <tr>
+                                <td>
+                                    Position
+                                    <select ng-change="pitch()" ng-model="stat_bf.position" ng-options="o as o for o in enumOptions"></select>
+                                </td>
+                                <td>TC<input type="text" ng-model="stat_bf.TC"></td>
+                                <td>A<input type="text" ng-model="stat_bf.A"></td>
+                            </tr>
+                            <tr>
+                                <td>DP<input type="text" ng-model="stat_bf.DP"></td>
+                                <td>E<input type="text" ng-model="stat_bf.E"></td>
+                                <td>PA<input type="text" ng-model="stat_bf.PA"></td>
+                            </tr>
+                            <tr>
+                                <td>H<input type="text" ng-model="stat_bf.H"></td>
+                                <td>AVG<input type="text" ng-model="stat_bf.AVG"></td>
+                                <td>BB_HP<input type="text" ng-model="stat_bf.BB_HP"></td>
+                            </tr>
+                            <tr>
+                                <td>HR<input type="text" ng-model="stat_bf.HR"></td>
+                                <td>RBI<input type="text" ng-model="stat_bf.RBI"></td>
+                                <td>R<input type="text" ng-model="stat_bf.R"></td>
+                            </tr>
+                            <tr>
+                                <td>SB<input type="text" ng-model="stat_bf.SB"></td>
+                                <td>PSS<input type="text" ng-model="stat_bf.PSS"></td>
+                                <td>
+                                    <button class="ui button" ng-click="add_stats()">Send</button>
+                                </td>
+                            </tr>           
+                    </table>
+                </div>
+                <div class="content content-right">
+                    <span>Pitching Record</span>
+                    <table class="ui celled table">
+                            <tr>
+                                <td>IP<input type="text" ng-model="stat_p.IP"></td>
+                                <td>W<input type="text" ng-model="stat_p.W"></td>
+                                <td>L<input type="text" ng-model="stat_p.L"></td>
+                            </tr>
+                            <tr>
+                                <td>H<input type="text" ng-model="stat_p.H2"></td>
+                                <td>SV<input type="text" ng-model="stat_p.SV"></td>
+                                <td>BB_HP<input type="text" ng-model="stat_p.BB_HP2"></td>
+                            </tr>
+                            <tr>
+                                <td>ER<input type="text" ng-model="stat_p.ER"></td>
+                            </tr>           
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="" ng-hide="hide_stat" style="float: left; width: 600px; margin-left: 200px">
+        <div class="content content-right">
+            <span>Batting & Fielding Record</span>
+            <table class="ui celled table">
+                    <tr>
+                        <td >Position <span ng-bind="stat_bf.position"></span></td>
+                        <td >TC <span ng-bind="stat_bf.TC"></span></td>
+                        <td >A <span ng-bind="stat_bf.A"></span></td>
+                    </tr>
+                    <tr>
+                        <td >DP <span ng-bind="stat_bf.DP"></span></td>
+                        <td >E <span ng-bind="stat_bf.E"></span></td>
+                        <td >PA <span ng-bind="stat_bf.PA"></span></td>
+                    </tr>
+                    <tr>
+                        <td >H <span ng-bind="stat_bf.H"></span></td>
+                        <td >AVG <span ng-bind="stat_bf.AVG"></span></td>
+                        <td >BB_HP <span ng-bind="stat_bf.BB_HP"></span></td>
+                    </tr>
+                    <tr>
+                        <td >HR <span ng-bind="stat_bf.HR"></span></td>
+                        <td >RBI <span ng-bind="stat_bf.RBI"></span></td>
+                        <td >R <span ng-bind="stat_bf.R"></span></td>
+                    </tr>           
+                    <tr>
+                        <td >SB <span ng-bind="stat_bf.SB"></span></td>
+                        <td >PSS <span ng-bind="stat_bf.PSS"></span></td>
+                    </tr>
+            </table>
+        </div>
+        <div class="content content-right">
+            <span>Pitching Record</span>
+            <table class="ui celled table">
+                    <tr>
+                        <td >IP<span ng-bind="stat_p.IP"></span></td>
+                        <td >W<span ng-bind="stat_p.W"></span></td>
+                        <td >L<span ng-bind="stat_p.L"></span></td>
+                    </tr>
+                    <tr>
+                        <td >H<span ng-bind="stat_p.H2"></span></td>
+                        <td >SV<span ng-bind="stat_p.SV"></span></td>
+                        <td >BB_HP<span ng-bind="stat_p.BB_HP2"></span></td>
+                    </tr>       
+                    <tr>
+                        <td >ER<span ng-bind="stat_p.ER"></span></td>
+                    </tr>
+            </table>
+        </div>        
+    </div>    
+    <div style = "float: right">
+        <span ng-bind="away_team.team_name"></span>
+        <div ng-repeat="player in away_players">
+            <i ng-click="stats2(player.player_id)">icon</i>
+            <div ng-bind="player.player_name" ng-click="stats(player.player_id)"></div>
+
+        </div>
+    </div>
+
+</div>
