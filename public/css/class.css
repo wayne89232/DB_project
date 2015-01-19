@@ -1,6 +1,6 @@
 .TitTBSD
 { 
-   width:1349x;
+   width:1349px;
    height:1.1em;
    border:6em;
    font-size:200%;
@@ -37,9 +37,15 @@
 	padding: 2em 0 0em 0;
 	background: #fff;
 }
-#partialleft
+.partialleft
 {
-	margin-left: 35%;
-	margin: 0px auto;
+	margin-top:  2%;
+	margin-left: 3%;
+	padding left: 0.5em;
 
+}
+.partialright
+{
+   margin-top: 2.5%;	
+ 
 }
