@@ -15,15 +15,10 @@
 {
   padding-top:0px;
 }
-.List
-{
-	background: #b1ddab;
-	color: #fff;
-	border-radius:10px; 
-}
 .Homepage
 {
    height:150px;
+   background-image: url();
 }
 #topping
 { 
@@ -39,7 +34,7 @@
 }
 .partialleft
 {
-	margin-top:  2%;
+	margin-top:  1.5%;
 	margin-left: 3%;
 	padding left: 0.5em;
 
@@ -48,4 +43,10 @@
 {
    margin-top: 2.5%;	
  
+}
+.inform
+{
+  font-size:200%;
+  font-weight: bold;
+  color:#b1ddab;
 }
