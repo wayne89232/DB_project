@@ -71,8 +71,15 @@ app.get('/league/show_league/:league_id', league.show_league);
 app.post('/player/add_player', player.add_player);
 app.get('/player/list_player/:team_id', player.list_player);
 
+
 app.post('/game/add_game', game.add_game);
 app.get('/game/list_game', game.list_game);
+
+app.get('/city/list_city', api.list_city);
+app.get('/school/list_school', api.list_school);
+app.get('/field/list_field', api.list_field);
+
+
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);
 

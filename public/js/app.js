@@ -32,10 +32,18 @@ config(function ($routeProvider, $locationProvider) {
     when('/Game', {
       templateUrl: 'partials/game_list',
       controller: 'Game'
-    })
-    .when('/teat', {
-      templateUrl: 'partials/league',
-      controller: 'League'
+    }).
+    when('/School', {
+      templateUrl: 'partials/school',
+      controller: 'School'
+    }).
+    when('/City', {
+      templateUrl: 'partials/city',
+      controller: 'City'
+    }).
+    when('/Field', {
+      templateUrl: 'partials/field',
+      controller: 'Field'
     }).otherwise({
       redirectTo: '/'
     });

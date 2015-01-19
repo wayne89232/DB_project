@@ -30,6 +30,21 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     $scope.view = function(id){
         $location.path('/league/'+id);
     }
+}).controller('City', function ($scope, $http, $location, $window) {
+    $scope.cities = [];
+    $http({ method:"GET", url:'/city/list_city' }).success(function(cities){
+        $scope.cities = cities.msg;
+    });
+}).controller('Field', function ($scope, $http, $location, $window) {
+    $scope.fields = [];
+    $http({ method:"GET", url:'/field/list_field' }).success(function(fields){
+        $scope.fields = fields.msg;
+    });
+}).controller('School', function ($scope, $http, $location, $window) {
+    $scope.schools = [];
+    $http({ method:"GET", url:'/school/list_school' }).success(function(schools){
+        $scope.schools = schools.msg;
+    });
 }).controller('Team', function ($scope, $http, $location, $window) {
     $scope.teams = [];
     $http({ method:"GET", url:'/team/list_team' }).success(function(teams){
