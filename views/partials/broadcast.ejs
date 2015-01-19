@@ -23,12 +23,10 @@
     				</tr>
     			</thead>
     			<tbody>
-					<tr ng-repeat="league in leagues">
-						<td ng-bind = "league.league_name"></td>
-						<td ng-bind = "league.city_id"></td>
-						<td ng-bind = "league.year"></td>
-						<td ng-bind = "league.year"></td>
-						<td ng-bind = "league.year"></td>
+					<tr ng-repeat="broadcast in broadcasts">
+						<td ng-bind = "broadcast.broadcast_id"></td>
+						<td ng-bind = "broadcast.type"></td>
+						<td ng-bind = "broadcast.broadcast_URL"></td>
 					</tr>
 				</tbody>
    			</table>

@@ -11,7 +11,7 @@ var B_F_record = require('../models').B_F_record;
 var Pitching_record = require('../models').Pitching_record;
 var Ban = require('../models').Ban;
 var Field = require('../models').Field;
-var Broadcast = require('..models').Broadcast;
+var Broadcast = require('../models').Broadcast;
 var _ = require('underscore');
 
 
