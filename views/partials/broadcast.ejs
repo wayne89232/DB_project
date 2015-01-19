@@ -18,6 +18,7 @@
     			<thead>
     				<tr>
     					<th>Broadcast ID</th>
+    					<th>Game ID</th>
     					<th>Type</th>
     					<th>Broacast URL</th>
     				</tr>
@@ -25,6 +26,7 @@
     			<tbody>
 					<tr ng-repeat="broadcast in broadcasts">
 						<td ng-bind = "broadcast.broadcast_id"></td>
+						<td ng-bind = "broadcast.game_id"></td>
 						<td ng-bind = "broadcast.type"></td>
 						<td ng-bind = "broadcast.broadcast_URL"></td>
 					</tr>

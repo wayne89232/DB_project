@@ -77,6 +77,10 @@ config(function ($routeProvider, $locationProvider) {
       templateUrl: 'partials/add_umpire',
       controller: 'Umpire'
     })
+    .when('/add_broadcast', {
+      templateUrl: 'partials/add_broadcast',
+      controller: 'Broadcast'
+    })
     .otherwise({
       redirectTo: '/'
     });

@@ -10,6 +10,7 @@ var Umpire = require('../models').Umpire;
 var B_F_record = require('../models').B_F_record;
 var Pitching_record = require('../models').Pitching_record;
 var Ban = require('../models').Ban;
+var Game = require('../models').Games;
 var Field = require('../models').Field;
 var Broadcast = require('../models').Broadcast;
 var _ = require('underscore');
@@ -225,12 +226,15 @@ exports.add_city = function(req, res){
 }
 
 exports.add_broadcast = function(req, res){
-	Game.find({ where: { game_name: req.body.game } }).then(function(result){
+	Game.find({ where: { game_id: req.body.game } }).then(function(result){
 		if(_.size(result) != 0){
-			Umpire.create({
-				umpire_name: req.body.name
-			}).then(function(umpire){
-				res.json({ msg: "Success on adding Umpire " + umpire.umpire_name });
+			Broadcast.create({
+				broadcast_id: req.body.id,
+				game_id: req.body.game,
+				broadcast_URL: req.body.URL,
+				type: req.body.type
+			}).then(function(broadcast){
+				res.json({ msg: "Success on adding Broadcast " + broadcast.broadcast_name });
 			});
 		}
 		else{

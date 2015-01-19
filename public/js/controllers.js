@@ -156,6 +156,27 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     $http({ method:"GET", url:'/broadcast/list_broadcast' }).success(function(broadcasts){
         $scope.broadcasts = broadcasts.msg;
     });
+    $scope.add_broadcast = function(){
+        if($scope.id != null && $scope.game != null && $scope.type != null && $scope.URL != null){
+            var data = {
+                id: $scope.id, 
+                game: $scope.game,
+                type: $scope.type,
+                URL: $scope.URL
+            };
+            $http({
+                method: "POST", 
+                url: '/api/add_broadcast', 
+                data: data
+            }).then(function(result){
+                $window.location.reload();
+                $location.path('/add_broadcast');
+            });
+        }
+        else{
+            alert("Fill in all entities!");
+        }
+    }
 }).controller('Team', function ($scope, $http, $location, $window) {
     $scope.teams = [];
     $http({ method:"GET", url:'/team/list_team' }).success(function(teams){

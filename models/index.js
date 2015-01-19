@@ -65,6 +65,8 @@ var Umpire_game = require('./umpire_game').Umpire_game(Sequelize,sequelize);
 // B_F_record.belongsTo(Games, {foreignKey: 'game_id'});
 // Games.hasMany(Pitching_record, {foreignKey: 'game_id'});
 // Pitching_record.belongsTo(Games, {foreignKey: 'game_id'});
+// Games.hasMany(Games, {foreignKey: 'game_id'});
+// Broadcast.belongsTo(Broadcast, {foreignKey: 'game_id'});
 // Broadcast.hasMany(Games, {foreignKey: 'broadcast_id'});
 // Games.belongsTo(Broadcast, {foreignKey: 'broadcast_id'});
 // Field.hasMany(Games, {foreignKey: 'field_id'});
