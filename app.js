@@ -74,6 +74,9 @@ app.get('/player/list_player/:team_id', player.list_player);
 app.get('/city/list_city', api.list_city);
 app.get('/school/list_school', api.list_school);
 app.get('/field/list_field', api.list_field);
+app.get('/ban/list_ban', api.list_ban);
+app.get('/umpire/list_umpire', api.list_umpire);
+app.get('/broadcast/list_broadcast', api.list_broadcast);
 
 app.post('/game/add_game', game.add_game);
 app.get('/game/list_game', game.list_game);

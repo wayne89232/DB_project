@@ -45,6 +45,21 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     $http({ method:"GET", url:'/school/list_school' }).success(function(schools){
         $scope.schools = schools.msg;
     });
+}).controller('Ban', function ($scope, $http, $location, $window) {
+    $scope.bans = [];
+    $http({ method:"GET", url:'/ban/list_ban' }).success(function(bans){
+        $scope.bans = bans.msg;
+    });
+}).controller('Umpire', function ($scope, $http, $location, $window) {
+    $scope.umpires = [];
+    $http({ method:"GET", url:'/umpire/list_umpire' }).success(function(umpires){
+        $scope.umpires = umpires.msg;
+    });
+}).controller('Broadcast', function ($scope, $http, $location, $window) {
+    $scope.broadcasts = [];
+    $http({ method:"GET", url:'/broadcast/list_broadcast' }).success(function(broadcasts){
+        $scope.broadcasts = broadcasts.msg;
+    });
 }).controller('Team', function ($scope, $http, $location, $window) {
     $scope.teams = [];
     $http({ method:"GET", url:'/team/list_team' }).success(function(teams){
