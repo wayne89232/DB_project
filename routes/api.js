@@ -191,3 +191,30 @@ exports.add_field = function(req, res){
 	});
 
 }
+
+exports.list_school = function(req, res){
+	School.findAll().then(function(result){
+		school = _.map(result, function(result){
+			return result.dataValues; 
+		});
+		res.json({ msg: school });
+	});
+}
+
+exports.list_field = function(req, res){
+	Field.findAll().then(function(result){
+		field = _.map(result, function(result){
+			return result.dataValues; 
+		});
+		res.json({ msg: field });
+	});
+}
+
+exports.list_city = function(req, res){
+	City.findAll().then(function(result){
+		city = _.map(result, function(result){
+			return result.dataValues; 
+		});
+		res.json({ msg: city });
+	});
+}

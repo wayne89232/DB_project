@@ -22,15 +22,12 @@
     				</tr>
     			</thead>
     			<tbody>
-					<tr ng-repeat="league in leagues">
-						<td ng-bind = "league.league_name"></td>
-						<td ng-bind = "league.city_id"></td>
+					<tr ng-repeat="city in cities">
+						<td ng-bind = "city.city_id"></td>
+						<td ng-bind = "city.city_name"></td>
 					</tr>
 				</tbody>
    			</table>
-    		<div ng-repeat="league in leagues">
-       		 	<span ng-click = "view(league.league_id)" ng-bind = "league.league_name"><span>
-    		</div>
     	</div>
 	</div>
 </div>

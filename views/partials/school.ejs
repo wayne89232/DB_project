@@ -12,7 +12,6 @@
 		</div>
 	</div>
 	<div class="9u">
-	
 		<div class="content content-right partialright">
     		<table class="ui celled table ">
     			<thead>
@@ -22,15 +21,12 @@
     				</tr>
     			</thead>
     			<tbody>
-					<tr ng-repeat="league in leagues">
-						<td ng-bind = "league.league_name"></td>
-						<td ng-bind = "league.city_id"></td>
+					<tr ng-repeat="school in schools">
+						<td ng-bind = "school.school_id"></td>
+						<td ng-bind = "school.school_name"></td>
 					</tr>
 				</tbody>
    			</table>
-    		<div ng-repeat="league in leagues">
-       		 	<span ng-click = "view(league.league_id)" ng-bind = "league.league_name"><span>
-    		</div>
     	</div>
 	</div>
 </div>
