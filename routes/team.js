@@ -14,6 +14,20 @@ exports.list_team = function(req, res){
 	});
 }
 
+exports.list_team_by_league = function(req, res){
+	League_team.findAll({
+		where: {
+			league_id: req.params.league_id
+		}, 
+		include: [Team]
+	}).then(function(result){
+		teams = _.map(result, function(result){
+			return result.dataValues.Team.dataValues; 
+		});
+		res.json({ msg: teams });
+	});
+}
+
 exports.show_team = function(req, res){
 	Team.find({ where:{ team_id: req.params.team_id } }).then(function(result){
 		res.json({ msg: result.dataValues });

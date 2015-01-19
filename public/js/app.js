@@ -30,7 +30,7 @@ config(function ($routeProvider, $locationProvider) {
       controller: 'show_team'
     }).
     when('/Game', {
-      templateUrl: 'partials/game',
+      templateUrl: 'partials/game_list',
       controller: 'Game'
     })
     .when('/teat', {

@@ -1,0 +1,42 @@
+Game list
+<div ng-repeat="game in games">
+    <span ng-bind="game.home_team_score"></span><span ng-bind="game.away_team_score"></span>  
+</div>
+
+<div class="ui teal segment" ng-hide="player_add">
+    <form action="" class="ui form">
+        <div class="field">
+            <span>Add Game</span>
+            <div class="field">
+                League
+                <select ng-model="in_league" ng-change="league_change()">
+                    <option value="">Select league</option>
+                    <option ng-value="league.league_id" ng-repeat="league in leagues" ng-bind="league.league_name"></option>
+                </select>
+            </div> 
+            <div class="field" ng-hide="league_pick">
+                Home team
+                <select ng-model="home_team">
+                    <option value="">Select team</option>
+                    <option ng-value="team.team_id" ng-repeat="team in teams" ng-bind="team.team_name"></option>
+                </select>
+                Score<input type="text" ng-model="home_team_score">                
+            </div>
+            <div class="field" ng-hide="league_pick">
+                Away team
+                <select ng-model="away_team">
+                    <option value="">Select team</option>
+                    <option ng-value="team.team_id" ng-repeat="team in teams" ng-bind="team.team_name"></option>
+                </select>               
+                Score<input type="text" ng-model="away_team_score">  
+            </div>
+            <div class="field">
+                Field<input type="text" ng-model="field">
+            </div>
+            <div class="field">
+                Broadcast<input type="text" ng-model="broadcast">
+            </div>                 
+        </div>
+        <button class="ui button" ng-click="add_game()">Go</button>
+    </form>
+</div>
