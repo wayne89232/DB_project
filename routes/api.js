@@ -193,6 +193,53 @@ exports.add_field = function(req, res){
 
 }
 
+exports.add_school = function(req, res){
+	Game.find({ where: { game_name: req.body.game } }).then(function(result){
+		if(_.size(result) != 0){
+			Umpire.create({
+				//adding umpire game relation not yet
+				umpire_name: req.body.name
+			}).then(function(umpire){
+				res.json({ msg: "Success on adding Umpire " + umpire.umpire_name });
+			});
+		}
+		else{
+			res.json({ msg: "No such Game " });
+		}
+	});
+}
+
+exports.add_city = function(req, res){
+	City.find({ where: { city_name: req.body.name } }).then(function(result){
+		if(_.size(result) == 0){
+			City.create({
+				city_name: req.body.name
+			}).then(function(city){
+				res.json({ msg: "Success on adding City " + city.city_name });
+			});
+		}
+		else{
+			res.json({ msg: "City exist " });
+		}
+	});
+}
+
+exports.add_broadcast = function(req, res){
+	Game.find({ where: { game_name: req.body.game } }).then(function(result){
+		if(_.size(result) != 0){
+			Umpire.create({
+				//adding umpire game relation not yet
+				umpire_name: req.body.name
+			}).then(function(umpire){
+				res.json({ msg: "Success on adding Umpire " + umpire.umpire_name });
+			});
+		}
+		else{
+			res.json({ msg: "No such Game " });
+		}
+	});
+}
+
 exports.list_school = function(req, res){
 	School.findAll().then(function(result){
 		school = _.map(result, function(result){

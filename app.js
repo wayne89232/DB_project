@@ -74,11 +74,21 @@ app.get('/player/list_player/:team_id', player.list_player);
 app.post('/game/add_game', game.add_game);
 app.get('/game/list_game', game.list_game);
 
+app.post('/api/add_city', api.add_city);
 app.get('/city/list_city', api.list_city);
+
+app.post('/api/add_school', api.add_school);
 app.get('/school/list_school', api.list_school);
+
+app.post('/api/add_field', api.add_field);
 app.get('/field/list_field', api.list_field);
+
+app.post('/api/add_ban', api.add_ban);
 app.get('/ban/list_ban', api.list_ban);
+
+app.post('/api/add_umpire', api.add_umpire);
 app.get('/umpire/list_umpire', api.list_umpire);
+
 app.get('/broadcast/list_broadcast', api.list_broadcast);
 
 // redirect all others to the index (HTML5 history)

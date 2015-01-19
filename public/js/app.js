@@ -44,16 +44,40 @@ config(function ($routeProvider, $locationProvider) {
     when('/Field', {
       templateUrl: 'partials/field',
       controller: 'Field'
-    }).when('/Ban', {
+    })
+    .when('/Ban', {
       templateUrl: 'partials/ban',
       controller: 'Ban'
-    }).when('/Umpire', {
+    })
+    .when('/Umpire', {
       templateUrl: 'partials/umpire',
       controller: 'Umpire'
-    }).when('/Broadcast', {
+    })
+    .when('/Broadcast', {
       templateUrl: 'partials/broadcast',
       controller: 'Broadcast'
-    }).otherwise({
+    })
+    .when('/add_school', {
+      templateUrl: 'partials/add_school',
+      controller: 'School'
+    })
+    .when('/add_city', {
+      templateUrl: 'partials/add_city',
+      controller: 'City'
+    })
+    .when('/add_ban', {
+      templateUrl: 'partials/add_ban',
+      controller: 'Ban'
+    })
+    .when('/add_field', {
+      templateUrl: 'partials/add_field',
+      controller: 'Field'
+    })
+    .when('/add_umpire', {
+      templateUrl: 'partials/add_umpire',
+      controller: 'Umpire'
+    })
+    .otherwise({
       redirectTo: '/'
     });
 
