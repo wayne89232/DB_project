@@ -1,0 +1,30 @@
+<div class="ui page grid">
+    <div class="column padleft">
+        <div class="ui teal addingb">
+
+            <form action="" class="ui ">
+                <div class="field">
+                    Broadcast ID<input type="text" ng-model="id">
+                </div>
+                 <div class="field">
+                    Game ID<input type="text" ng-model="game">
+                </div>
+                 <div class="field">
+                    Type
+                    <select ng-model="type">
+                        <option value="">Select Type</option>
+                        <option>TV</option>
+                        <option>Online</option>
+                        <option>Text</option>
+                        <option>Broadcast</option>
+                    </select>
+                </div>
+                 <div class="field">
+                    Broacast URL<input type="text" ng-model="URL">
+                </div>
+                <button class="ui button" ng-click="add_broadcast()">Send</button>
+            </form>
+        </div>
+    </div>
+</div>
+
