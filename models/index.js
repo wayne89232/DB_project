@@ -28,7 +28,7 @@ var League_team = require('./league_team').League_team(Sequelize,sequelize);
 var Umpire_game = require('./umpire_game').Umpire_game(Sequelize,sequelize);
 
 //add some relations here
-
+/*
 Team.hasMany(Player, {foreignKey: 'team_id'});
 Player.belongsTo(Team, {foreignKey: 'team_id'});
 School.hasMany(Team, {foreignKey: 'school_id'});
@@ -83,7 +83,7 @@ Ban.belongsTo(Player, {foreignKey: 'player_id'});
 
 City.hasMany(Field, {foreignKey: 'city_id'});
 Field.belongsTo(City, {foreignKey: 'city_id'});
-
+*/
 exports.Team = Team;
 exports.Umpire = Umpire;
 exports.School = School;

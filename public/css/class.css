@@ -1,0 +1,51 @@
+.TitTBSD
+{ 
+   width:1349px;
+   height:1.1em;
+   border:6em;
+   font-size:200%;
+   font-weight: bold;
+   color:#b1ddab;
+   padding-top:0px;
+   /*position: absolute;*/
+   margin: 0px auto;
+
+}
+.Top
+{
+  padding-top:0px;
+}
+.List
+{
+	background: #b1ddab;
+	color: #fff;
+	border-radius:10px; 
+}
+.Homepage
+{
+   height:150px;
+}
+#topping
+{ 
+    font-size: 1.5em;
+	line-height: 1.5em;
+	text-align: center;
+	font-size: 2em;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	padding: 2em 0 0em 0;
+	background: #fff;
+}
+.partialleft
+{
+	margin-top:  2%;
+	margin-left: 3%;
+	padding left: 0.5em;
+
+}
+.partialright
+{
+   margin-top: 2.5%;	
+ 
+}
