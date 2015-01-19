@@ -1,0 +1,28 @@
+<div class="ui page grid">
+    <div class="column padleft">
+        <div class="ui teal addingb">
+
+            <form action="" class="ui ">
+                <div class="field">
+                    Player Name<input type="text" ng-model="year">
+                </div>
+                 <div class="field">
+                     Game <input type="text" ng-model="year">
+                </div>
+                 <div class="field">
+                    Ban Game Num<input type="text" ng-model="year">
+                </div>
+                 <div class="field">
+                    Description<input type="text" ng-model="year">
+                </div>
+                <button class="ui button" ng-click="add_league()">Send</button>
+            </form>
+        </div>
+    </div>
+    <div>
+        <div ng-repeat="league in leagues">
+            <span ng-click = "view(league.league_id)" ng-bind = "league.league_name"><span>
+        </div>
+    </div>
+</div>
+
