@@ -4,21 +4,21 @@
 
             <form action="" class="ui ">
                 <div class="field">
-                    City Name<input type="text" ng-model="year">
+                    City Name<input type="text" ng-model="city">
                 </div>
                  <div class="field">
-                     Type<input type="text" ng-model="year">
+                    Type
+                    <select ng-model="type">
+                        <option value="">Select Type</option>
+                        <option>type1</option>
+                        <option>type2</option>
+                    </select>
                 </div>
                  <div class="field">
-                     Center Distance<input type="text" ng-model="year">
+                     Center Distance<input type="text" ng-model="distance">
                 </div>
-                <button class="ui button" ng-click="add_league()">Send</button>
+                <button class="ui button" ng-click="add_field()">Send</button>
             </form>
-        </div>
-    </div>
-    <div>
-        <div ng-repeat="league in leagues">
-            <span ng-click = "view(league.league_id)" ng-bind = "league.league_name"><span>
         </div>
     </div>
 </div>

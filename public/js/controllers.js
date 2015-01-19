@@ -36,19 +36,17 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
         $scope.cities = cities.msg;
     });
     $scope.add_city = function(){
-        if($scope.name != null && $scope.city != null && $scope.year != null ){
+        if($scope.name != null){
             var data = {
-                name: $scope.name, 
-                city: $scope.city,
-                year: $scope.year
+                name: $scope.name
             };
             $http({
                 method: "POST", 
-                url: '/api/add_league', 
+                url: '/api/add_city', 
                 data: data
             }).then(function(result){
                 $window.location.reload();
-                $location.path('/League');
+                $location.path('/add_city');
             });
         }
         else{
@@ -60,20 +58,20 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     $http({ method:"GET", url:'/field/list_field' }).success(function(fields){
         $scope.fields = fields.msg;
     });
-    $scope.add_league = function(){
-        if($scope.name != null && $scope.city != null && $scope.year != null ){
+    $scope.add_field = function(){
+        if($scope.city != null && $scope.type != null && $scope.distance != null ){
             var data = {
-                name: $scope.name, 
-                city: $scope.city,
-                year: $scope.year
+                city: $scope.city, 
+                type: $scope.type,
+                distance: $scope.distance
             };
             $http({
                 method: "POST", 
-                url: '/api/add_league', 
+                url: '/api/add_field', 
                 data: data
             }).then(function(result){
                 $window.location.reload();
-                $location.path('/League');
+                $location.path('/add_field');
             });
         }
         else{
@@ -85,20 +83,18 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     $http({ method:"GET", url:'/school/list_school' }).success(function(schools){
         $scope.schools = schools.msg;
     });
-    $scope.add_league = function(){
-        if($scope.name != null && $scope.city != null && $scope.year != null ){
+    $scope.add_school = function(){
+        if($scope.name != null){
             var data = {
-                name: $scope.name, 
-                city: $scope.city,
-                year: $scope.year
+                name: $scope.name
             };
             $http({
                 method: "POST", 
-                url: '/api/add_league', 
+                url: '/api/add_school', 
                 data: data
             }).then(function(result){
                 $window.location.reload();
-                $location.path('/League');
+                $location.path('/add_school');
             });
         }
         else{
@@ -110,20 +106,21 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     $http({ method:"GET", url:'/ban/list_ban' }).success(function(bans){
         $scope.bans = bans.msg;
     });
-    $scope.add_league = function(){
-        if($scope.name != null && $scope.city != null && $scope.year != null ){
+    $scope.add_ban = function(){
+        if($scope.player != null && $scope.game != null && $scope.num != null && $scope.description != null ){
             var data = {
-                name: $scope.name, 
-                city: $scope.city,
-                year: $scope.year
+                player: $scope.player,
+                game: $scope.game,
+                num: $scope.num,
+                description: $scope.description
             };
             $http({
                 method: "POST", 
-                url: '/api/add_league', 
+                url: '/api/add_ban', 
                 data: data
             }).then(function(result){
                 $window.location.reload();
-                $location.path('/League');
+                $location.path('/add_ban');
             });
         }
         else{
@@ -135,20 +132,19 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     $http({ method:"GET", url:'/umpire/list_umpire' }).success(function(umpires){
         $scope.umpires = umpires.msg;
     });
-    $scope.add_league = function(){
-        if($scope.name != null && $scope.city != null && $scope.year != null ){
+    $scope.add_umpire = function(){
+        if($scope.umpire != null && $scope.position != null){
             var data = {
-                name: $scope.name, 
-                city: $scope.city,
-                year: $scope.year
+                umpire: $scope.umpire, 
+                position: $scope.position
             };
             $http({
                 method: "POST", 
-                url: '/api/add_league', 
+                url: '/api/add_umpire', 
                 data: data
             }).then(function(result){
                 $window.location.reload();
-                $location.path('/League');
+                $location.path('/add_umpire');
             });
         }
         else{

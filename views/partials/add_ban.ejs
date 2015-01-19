@@ -4,24 +4,19 @@
 
             <form action="" class="ui ">
                 <div class="field">
-                    Player Name<input type="text" ng-model="year">
+                    Player Name<input type="text" ng-model="player">
                 </div>
                  <div class="field">
-                     Game <input type="text" ng-model="year">
+                     Game <input type="text" ng-model="game">
                 </div>
                  <div class="field">
-                    Ban Game Num<input type="text" ng-model="year">
+                    Ban Game Num<input type="text" ng-model="num">
                 </div>
                  <div class="field">
-                    Description<input type="text" ng-model="year">
+                    Description<input type="text" ng-model="description">
                 </div>
-                <button class="ui button" ng-click="add_league()">Send</button>
+                <button class="ui button" ng-click="add_ban()">Send</button>
             </form>
-        </div>
-    </div>
-    <div>
-        <div ng-repeat="league in leagues">
-            <span ng-click = "view(league.league_id)" ng-bind = "league.league_name"><span>
         </div>
     </div>
 </div>

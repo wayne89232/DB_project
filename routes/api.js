@@ -75,17 +75,18 @@ exports.add_prize = function(req, res){
 }
 
 exports.add_umpire = function(req, res){
-	Game.find({ where: { game_name: req.body.game } }).then(function(result){
-		if(_.size(result) != 0){
+	Umpire.find({ where: { umpire_name: req.body.umpire } }).then(function(result){
+		if(_.size(result) == 0){
 			Umpire.create({
 				//adding umpire game relation not yet
-				umpire_name: req.body.name
+				umpire_name: req.body.umpire,
+				position: req.body.position
 			}).then(function(umpire){
 				res.json({ msg: "Success on adding Umpire " + umpire.umpire_name });
 			});
 		}
 		else{
-			res.json({ msg: "No such Game " });
+			res.json({ msg: "Umpire exist" });
 		}
 	});
 }
@@ -148,8 +149,8 @@ exports.add_pitching_record = function(req, res){
 }
 
 exports.add_ban = function(req, res){
-	Game.find({ where: { league_name: req.body.game } }).then(function(result1){
-		Player.find({ where: { league_name: req.body.player } }).then(function(result2){
+	Game.find({ where: { game_name: req.body.game } }).then(function(result1){
+		Player.find({ where: { player_name: req.body.player } }).then(function(result2){
 			if(_.size(result1) != 0 && _.size(result2) != 0 ){
 				Ban.create({
 					game_id: result1.game_id, 
@@ -171,18 +172,18 @@ exports.add_field = function(req, res){
 	City.find({ where: { city_name: req.body.city } }).then(function(result){
 		if(_.size(result) == 0){
 			City.create({ city_name: req.body.city }).then(function(result2){
-					Field.create({
-						city_id: result2.city_id,
-						type: req.body.type, 
-						center_distance: req.body.distance
-					}).then(function(){
-						res.json({ msg: "Success on adding field "});
-					});
+				Field.create({
+					city_id: result2.city_id,
+					type: req.body.type, 
+					center_distance: req.body.distance
+				}).then(function(){
+					res.json({ msg: "Success on adding field "});
+				});
 			});
 		}
 		else{
 			Field.create({
-				city_id: result2.city_id,
+				city_id: result.city_id,
 				type: req.body.type, 
 				center_distance: req.body.distance
 			}).then(function(){
@@ -194,17 +195,16 @@ exports.add_field = function(req, res){
 }
 
 exports.add_school = function(req, res){
-	Game.find({ where: { game_name: req.body.game } }).then(function(result){
-		if(_.size(result) != 0){
-			Umpire.create({
-				//adding umpire game relation not yet
-				umpire_name: req.body.name
-			}).then(function(umpire){
-				res.json({ msg: "Success on adding Umpire " + umpire.umpire_name });
+	School.find({ where: { school_name: req.body.name } }).then(function(result){
+		if(_.size(result) == 0){
+			School.create({
+				school_name: req.body.name
+			}).then(function(school){
+				res.json({ msg: "Success on adding School " + school.school_name });
 			});
 		}
 		else{
-			res.json({ msg: "No such Game " });
+			res.json({ msg: "School exist" });
 		}
 	});
 }
@@ -228,7 +228,6 @@ exports.add_broadcast = function(req, res){
 	Game.find({ where: { game_name: req.body.game } }).then(function(result){
 		if(_.size(result) != 0){
 			Umpire.create({
-				//adding umpire game relation not yet
 				umpire_name: req.body.name
 			}).then(function(umpire){
 				res.json({ msg: "Success on adding Umpire " + umpire.umpire_name });
