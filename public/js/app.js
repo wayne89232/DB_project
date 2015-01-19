@@ -37,6 +37,10 @@ config(function ($routeProvider, $locationProvider) {
       templateUrl: 'partials/league',
       controller: 'League'
     })
+    .when('/game/:id', {
+      templateUrl: 'partials/game_stat',
+      controller: 'game_stat'
+    })
     .otherwise({
       redirectTo: '/'
     });

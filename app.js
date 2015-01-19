@@ -12,6 +12,7 @@ var express = require('express'),
   api = require('./routes/api'),
   league = require('./routes/league'),
   team = require('./routes/team'),
+  records = require('./routes/records'),
   player = require('./routes/player'),
   game = require('./routes/game'),
   http = require('http'),
@@ -71,8 +72,14 @@ app.get('/league/show_league/:league_id', league.show_league);
 app.post('/player/add_player', player.add_player);
 app.get('/player/list_player/:team_id', player.list_player);
 
+app.post('/records/add_stat/:player_id/:game_id', records.add_stat);
+app.get('/records/show_stat/:player_id/:game_id', records.show_stat);
+app.post('/records/add_stat2/:player_id/:game_id', records.add_stat2);
+app.get('/records/show_stat2/:player_id/:game_id', records.show_stat2);
+
 app.post('/game/add_game', game.add_game);
 app.get('/game/list_game', game.list_game);
+app.get('/game/show_game/:game_id', game.show_game);
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);
 

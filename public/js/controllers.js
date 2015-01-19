@@ -125,11 +125,23 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     $scope.leagues = [];
     $scope.games = [];
     $scope.league_pick = true;
+    $http({ method:"GET", url:'/team/list_team' }).success(function(teams){
+        $scope.teams = teams.msg;
+    });
     $http({ method:"GET", url:'/league/list_league' }).success(function(leagues){
         $scope.leagues = leagues.msg;
     });    
     $http({ method:"GET", url:'/game/list_game' }).success(function(result){
         $scope.games = result.msg;
+        var game_stat = [];
+        _.map($scope.games, function(game){
+            var arr = [];
+            arr.push(game);
+            arr.push( _.find($scope.teams, function(go){ return  go.team_id == game.home_team_id; }));
+            arr.push( _.find($scope.teams, function(go){ return  go.team_id == game.away_team_id; }));
+            game_stat.push(arr);
+        });
+        $scope.games = game_stat;
     });
     $scope.league_change = function(){
         $scope.league_pick = false;
@@ -166,6 +178,100 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
         }
     }
     $scope.view = function(id){
-        $location.path('/league/'+id);
+        $location.path('/game/'+id);
     }
+}).controller('game_stat', function ($scope, $http, $location, $window, $routeParams) {
+    $scope.enumOptions = ['P', 'C', "1B", "2B", "3B", "SS", "LF", "CF", "RF", "DH"];
+    $scope.hide_stat = true;
+    $scope.add_stat = true;
+    $http({ method:"GET", url:'/game/show_game/' + $routeParams.id }).success(function(result){
+        $scope.game = result.msg;
+        $http({ method:"GET", url:'/team/show_team/' + $scope.game.home_team_id }).success(function(result){
+            $scope.home_team = result.msg;
+            $http({ method:"GET", url:'/player/list_player/' + $scope.game.home_team_id }).success(function(result2){
+                $scope.home_players = result2.msg;
+            });
+        });
+        $http({ method:"GET", url:'/team/show_team/' + $scope.game.away_team_id }).success(function(result){
+            $scope.away_team = result.msg;
+            $http({ method:"GET", url:'/player/list_player/' + $scope.game.away_team_id }).success(function(result2){
+                $scope.away_players = result2.msg;
+            });
+        });
+    }); 
+    $scope.stats = function(id){
+        $scope.add_stat = true;
+        $scope.cur_player = id;
+        if($scope.hide_stat == true){
+            $http({ method:"GET", url:'/records/show_stat/' + $scope.cur_player+'/'+$routeParams.id }).success(function(result){
+                $scope.stat_bf = result.msg;
+            });
+            $http({ method:"GET", url:'/records/show_stat2/' + $scope.cur_player+'/'+$routeParams.id }).success(function(result){
+                $scope.stat_p = result.msg;
+            });                    
+        }
+        $scope.hide_stat = !($scope.hide_stat);
+    }
+    $scope.stats2 = function(id){
+        $scope.hide_stat = true;
+        $scope.cur_player = id;
+        if($scope.add_stat == true){
+            $http({ method:"GET", url:'/records/show_stat/' + $scope.cur_player+'/'+$routeParams.id }).success(function(result){
+                if(result.msg != "No record"){
+                    $scope.stat_bf = result.msg;
+                }
+            });
+            $http({ method:"GET", url:'/records/show_stat2/' + $scope.cur_player+'/'+$routeParams.id }).success(function(result){
+                if(result.msg != "No record"){
+                    $scope.stat_p = result.msg;
+                }
+            });                  
+        }
+        $scope.add_stat = !($scope.add_stat);
+    }
+    $scope.add_stats = function(){
+        if($scope.stat_bf.position != null ){
+            var data = {
+                position: $scope.stat_bf.position,
+                TC: $scope.stat_bf.TC,
+                A: $scope.stat_bf.A,
+                DP: $scope.stat_bf.DP,
+                E: $scope.stat_bf.E,
+                PA: $scope.stat_bf.PA,
+                H: $scope.stat_bf.H,
+                AVG: $scope.stat_bf.AVG,
+                BB_HP: $scope.stat_bf.BB_HP,
+                HR: $scope.stat_bf.HR,
+                RBI: $scope.stat_bf.RBI,
+                R: $scope.stat_bf.R,
+                SB: $scope.stat_bf.SB,
+                PSS: $scope.stat_bf.PSS
+            };
+            var data2 = {
+                IP: $scope.stat_p.IP,
+                W: $scope.stat_p.W,
+                L: $scope.stat_p.L,
+                H2: $scope.stat_p.H2,
+                SV: $scope.stat_p.SV,
+                BB_HP2: $scope.stat_p.BB_HP2,
+                ER: $scope.stat_p.ER
+            };
+            $http({
+                method: "POST", 
+                url: '/records/add_stat/' + $scope.cur_player+'/'+$routeParams.id, 
+                data: data
+            }).then(function(result){
+                $http({
+                    method: "POST", 
+                    url: '/records/add_stat2/' + $scope.cur_player+'/'+$routeParams.id, 
+                    data: data2
+                }).then(function(result){
+                    $window.location.reload();
+                });
+            });
+        }
+        else{
+            alert("Fill in position!");
+        }        
+    }  
 });
