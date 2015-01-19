@@ -1,17 +1,14 @@
-<div class="ui page grid">
-    <div class="column">
-        <div class="ui teal segment">
-
-            <form action="" class="ui form">
-                <div class="field">
-                    Team name<input type="text" ng-model="name">
-                </div>
-                <div class="field">
-                    School<input type="text" ng-model="school">
-                </div>
-                <button class="ui button" ng-click="add_team()">Send</button>
-            </form>
-        </div>
+<div>
+    <div>
+        <form action="" class="ui form segment">
+            <div class="field">
+                Team name<input type="text" ng-model="name">
+            </div>
+            <div class="field">
+                School<input type="text" ng-model="school">
+            </div>
+            <button class="ui button" ng-click="add_team()">Send</button>
+        </form>
     </div>
     <div>
         <div ng-repeat="team in teams">
