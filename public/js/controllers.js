@@ -6,6 +6,11 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     $scope.leagues = [];
     $http({ method:"GET", url:'/league/list_league' }).success(function(leagues){
         $scope.leagues = leagues.msg;
+        _.map($scope.leagues, function(league){
+            $http({ method:"GET", url:'/team/list_team_by_league/' + league.league_id }).success(function(teams){
+                league = _.extend(league, {team_num: teams.msg.length});
+            });
+        });
     });
     $scope.add_league = function(){
         if($scope.name != null && $scope.city != null && $scope.year != null ){
