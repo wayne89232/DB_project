@@ -1,5 +1,5 @@
 <div class="column ui teal mid addingb">
-    <form action="" class="ui ">
+    <form action="" class="ui">
         <div class="field">
             League name<input type="text" ng-model="name">
         </div>
@@ -10,6 +10,19 @@
             Year<input type="text" ng-model="year">
         </div>
         <button class="ui button" ng-click="add_league()">Send</button>
+    </form>
+</div>
+
+<div class="ui teal segment">
+    <form action="" class="ui form">
+        <div class="field">
+            <span>Add to League</span>
+            <select ng-model="add_league">
+                <option value="">Select league</option>
+                <option ng-value="league.league_id" ng-repeat="league in leagues" ng-bind="league.league_name"></option>
+            </select>
+        </div>
+        <button class="ui button" ng-click="add_to_league()">Go</button>
     </form>
 </div>
 

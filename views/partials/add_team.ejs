@@ -13,4 +13,33 @@
              </form>
         </div>
     </div>
+    <button class="ui button" ng-click="reveal_add_player()">Add player</button>
+    <div class="ui teal segment" ng-hide="player_add">
+        <form action="" class="ui form">
+            <div class="field">
+                <span>Add Player</span>
+                <div class="field">
+                    Name<input type="text" ng-model="player_name">
+                </div>
+                <div class="field">
+                    Position
+                    <select ng-model="position" ng-options="o as o for o in enumOptions"></select>
+                </div>
+                <div class="field">
+                    Age<input type="text" ng-model="age">
+                </div>
+                <div class="field">
+                    Height<input type="text" ng-model="height">
+                </div>
+                <div class="field">
+                    Weight<input type="text" ng-model="weight">
+                </div>
+                <div class="field">
+                    Batting
+                    <select ng-model="batting" ng-options="o as o for o in enumOptions2"></select>
+                </div>                                    
+            </div>
+            <button class="ui button" ng-click="add_player()">Go</button>
+        </form>
+    </div>
 </div>
