@@ -4,7 +4,7 @@
 			<div class="ui vertical demo menu">
 				<div class="item">
 					<div class="ui transparent icon input">
-						<input type="text" placeholder="Search...">
+						<input ng-model="search" type="text" placeholder="Search...">
 						<i class="search icon"></i>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
     			</tr>
     		</thead>
     		<tbody>
-				<tr ng-repeat="city in cities">
+				<tr ng-repeat="city in cities | filter:search">
 					<td ng-bind = "city.city_name"></td>
 				</tr>
 			</tbody>
@@ -39,7 +39,7 @@
     			</tr>
     		</thead>
     		<tbody>
-				<tr ng-repeat="school in schools">
+				<tr ng-repeat="school in schools | filter:search">
 					<td ng-bind = "school.school_name"></td>
 				</tr>
 			</tbody>
@@ -48,14 +48,14 @@
    		<table ng-hide = "show[2]" class="ui celled table">
     		<thead>
     			<tr>
-    				<th>CityID</th><!--city_name-->
+    				<th>City Name</th>
     				<th>Field Type</th>
     				<th>Center Distance</th>
     			</tr>
     		</thead>
     		<tbody>
-				<tr ng-repeat="field in fields">
-					<td ng-bind = "field.city_id"></td>
+				<tr ng-repeat="field in city_of_fields | filter:search">
+					<td ng-bind = "field.city_name"></td>
 					<td ng-bind = "field.type"></td>
 					<td ng-bind = "field.center_distance"></td>
 				</tr>
@@ -66,16 +66,16 @@
     		<thead>
     			<tr>
     				<th>Ban Num</th>
-    				<th>Player ID</th><!--player_name-->
+    				<th>Player Name</th><!--player_name-->
     				<th>Game Num</th>
     				<th>Banned Game Num</th>
     				<th>Description</th>
     			</tr>
     		</thead>
     		<tbody>
-				<tr ng-repeat="ban in bans">
+				<tr ng-repeat="ban in banned_player | filter:search">
 					<td ng-bind = "ban.ban_id"></td>
-					<td ng-bind = "ban.player_id"></td>
+					<td ng-bind = "ban.player_name"></td>
 					<td ng-bind = "ban.game_id"></td>
 					<td ng-bind = "ban.game_num"></td>
 					<td ng-bind = "ban.description"></td>
@@ -91,7 +91,7 @@
     			</tr>
     		</thead>
     		<tbody>
-				<tr ng-repeat="umpire in umpires">
+				<tr ng-repeat="umpire in umpires | filter:search">
 					<td ng-bind = "umpire.umpire_name"></td>
 					<td ng-bind = "umpire.position"></td>
 				</tr>

@@ -426,7 +426,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
         $scope.league_pick = false;
         $http({ method:"GET", url:'/team/list_team_by_league/' + $scope.in_league }).success(function(teams){
             $scope.teams = teams.msg;
-        });            
+        });
     }
     $scope.add_league = function(){
         if($scope.league != null && $scope.city0 != null && $scope.year != null ){
@@ -630,6 +630,14 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
         $scope.umpires = umpires.msg;
     });
     
+    $scope.city_of_fields = [];
+    $http({ method:"GET", url:'/city/find_city_name' }).success(function(city_of_fields){
+        $scope.city_of_fields = city_of_fields.msg;
+    });
+    $scope.banned_player = [];
+    $http({ method:"GET", url:'/player/find_player_name' }).success(function(banned_player){
+        $scope.banned_player = banned_player.msg;
+    });
     $scope.show_change = function(num){
         if(num != $scope.current){
             $scope.show[$scope.current] = true;

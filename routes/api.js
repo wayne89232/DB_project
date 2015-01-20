@@ -287,3 +287,29 @@ exports.list_broadcast = function(req, res){
 		res.json({ msg: broadcast });
 	});
 }
+
+exports.find_city_name = function(req, res){
+	Field.findAll({
+		include: [City]
+	}).then(function(result){
+  		city = _.map(result, function(result1){
+  			var temp = result1.dataValues;
+  			temp.city_name =  result1.dataValues.City.dataValues.city_name;
+			return temp; 
+		});
+		res.json({ msg: city });
+	});
+}
+
+exports.find_player_name = function(req, res){
+	Ban.findAll({
+		include: [Player]
+	}).then(function(result){
+  		bans = _.map(result, function(result2){
+  			var tmp = result2.dataValues;
+  			tmp.player_name =  result2.dataValues.Player.dataValues.player_name;
+			return tmp; 
+		});
+		res.json({ msg: bans });
+	});
+}

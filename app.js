@@ -72,6 +72,7 @@ app.get('/league/show_league/:league_id', league.show_league);
 
 app.post('/player/add_player', player.add_player);
 app.get('/player/list_player/:team_id', player.list_player);
+app.get('/player/find_player_name', api.find_player_name);
 
 app.post('/records/add_stat/:player_id/:game_id', records.add_stat);
 app.get('/records/show_stat/:player_id/:game_id', records.show_stat);
@@ -91,6 +92,7 @@ app.get('/game/list_umpire', game.list_umpire);
 
 app.post('/api/add_city', api.add_city);
 app.get('/city/list_city', api.list_city);
+app.get('/city/find_city_name', api.find_city_name);
 
 app.post('/api/add_school', api.add_school);
 app.get('/school/list_school', api.list_school);
