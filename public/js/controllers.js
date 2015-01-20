@@ -21,7 +21,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
         $scope.games = game_stat;
     });
     $scope.view = function(id){
-        $location.path('/team/'+id);
+        $location.path('/game/'+id);
     }
 }).controller('League', function ($scope, $http, $location, $window) {
     $scope.leagues = [];
@@ -131,7 +131,6 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
         $scope.team_name = team.team_name;
     });
     $http({ method:"GET", url:'/player/list_player/' + $routeParams.id }).success(function(result){
-        console.log(result.msg);
         $scope.players = result.msg;
     });
     $scope.enumOptions = ['P', 'C', "1B", "2B", "3B", "SS", "LF", "CF", "RF", "DH"];
@@ -267,9 +266,60 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
             $scope.away_team = result.msg;
             $http({ method:"GET", url:'/player/list_player/' + $scope.game.away_team_id }).success(function(result2){
                 $scope.away_players = result2.msg;
+                $scope.all_players = _.union($scope.home_players, $scope.away_players);
             });
         });
-    }); 
+        
+    });
+
+    $http({ method:"GET", url:'/game/show_umpire/' + $routeParams.id }).success(function(result){
+        $scope.umpires = result.msg;    
+        $http({ method:"GET", url:'/game/list_umpire'  }).success(function(result2){
+            $scope.allumpires = result2.msg;
+            var temp = [];
+            _.map($scope.allumpires, function(umpire){
+                if( _.pluck($scope.umpires, 'umpire_id').indexOf(umpire.umpire_id) == -1 ){ 
+                    temp.push(umpire);
+                }
+            });
+            $scope.allumpires = temp;
+        }); 
+    });
+    $scope.add_ban = function(id){
+        if( id != null && $scope.num != null && $scope.description != null ){
+            var data = {
+                player_id: id,
+                game_id: $routeParams.id,
+                num: $scope.num,
+                description: $scope.description
+            };
+            $http({
+                method: "POST", 
+                url: '/api/add_ban', 
+                data: data
+            }).then(function(result){
+                $window.location.reload();
+            });
+        }
+        else{
+            alert("Fill in all entities!");
+        }
+    } 
+    $scope.add_umpire = function(id){
+        if($scope.pick_umpire != null){
+            $http({ method:"POST", url:'/game/add_umpire/' + id + '/'+$routeParams.id }).success(function(result){
+                $window.location.reload();
+            });
+        }
+        else{
+            alert("Choose an umpire");
+        }
+    }
+    $scope.remove_umpire = function(id){
+        $http({ method:"GET", url:'/game/remove_umpire/' + id + '/'+$routeParams.id }).success(function(result){
+            $window.location.reload();
+        });
+    }
     $scope.stats = function(id){
         $scope.add_stat = true;
         $scope.cur_player = id;

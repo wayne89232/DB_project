@@ -1,6 +1,7 @@
 var Games = require("../models").Games;
 var Team = require("../models").Team;
 var Umpire_game = require("../models").Umpire_game;
+var Umpire = require("../models").Umpire;
 var _ = require('underscore');
 var async = require('async');
 
@@ -50,6 +51,16 @@ exports.add_umpire = function(req, res){
 		res.json({msg: "Umpire"+req.params.umpire_id +" add to Game"+ req.params.game_id});
 	});
 }
+exports.remove_umpire = function(req, res){
+	Umpire_game.destroy({
+		where:{
+			umpire_id: req.params.umpire_id,
+			game_id: req.params.game_id
+		}
+	}).then(function(result){
+		res.json({msg: "Umpire"+req.params.umpire_id +" remove from Game"+ req.params.game_id});
+	});
+}
 exports.show_umpire = function(req, res){
 	Umpire_game.findAll({
 		where: {
@@ -59,6 +70,14 @@ exports.show_umpire = function(req, res){
 	}).then(function(result){
 		umpires = _.map(result, function(result){
 			return result.dataValues.Umpire.dataValues; 
+		});
+		res.json({ msg: umpires });
+	});
+}
+exports.list_umpire = function(req, res){
+	Umpire.findAll().then(function(result){
+		umpires = _.map(result, function(result){
+			return result.dataValues; 
 		});
 		res.json({ msg: umpires });
 	});

@@ -37,18 +37,26 @@
 			<table class="ui celled table tsize">
 		        <thead>
 		            <tr>
-		                  <th class="tableform" colspan="2">Player Information
+		                  <th class="tableform" colspan="6">Player Information
                           </th>
 		            </tr>                    
 		            <tr>
-		                <th>Player Postion</th>
-		                <th>Player Name</th>
+		                <th>Name</th>
+                        <th>Postion</th>
+                        <th>Age</th>
+                        <th>Height</th>
+                        <th>Weight</th>
+                        <th>Batting</th>
 		            </tr>
 		        </thead>
 		        <tbody>
 		            <tr ng-repeat="player in players">
-		                <td> <span ng-bind="player.position"></span> </td>
-		                <td><span ng-bind="player.player_name"></span></td>
+		                <td> <span ng-bind="player.player_name"></span> </td>
+                        <td><span ng-bind="player.position"></span></td>
+                        <td><span ng-bind="player.age"></span></td>
+                        <td><span ng-bind="player.height"></span></td>
+                        <td><span ng-bind="player.weight"></span></td>
+                        <td><span ng-bind="player.batting"></span></td>
 		            </tr>
 		        </tbody>
 			</table>

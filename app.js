@@ -85,8 +85,9 @@ app.get('/game/list_game', game.list_game);
 app.get('/game/list_game_by_league/:league_id', game.list_game_by_league);
 app.get('/game/show_game/:game_id', game.show_game);
 app.post('/game/add_umpire/:umpire_id/:game_id', game.add_umpire);
-app.get('/game/show_umpire/:umpire_id/:game_id', game.show_umpire);
-
+app.get('/game/remove_umpire/:umpire_id/:game_id', game.remove_umpire);
+app.get('/game/show_umpire/:game_id', game.show_umpire);
+app.get('/game/list_umpire', game.list_umpire);
 
 app.post('/api/add_city', api.add_city);
 app.get('/city/list_city', api.list_city);
