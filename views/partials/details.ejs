@@ -18,7 +18,6 @@
 			<a class="item" ng-click="show_change(2)">Field</a>
 			<a class="item" ng-click="show_change(3)">Ban</a>
 			<a class="item" ng-click="show_change(4)">Umpire</a>
-			<a class="item" ng-click="show_change(5)">Braoadcast</a>
 		</div>
     	<table ng-hide = "show[0]" class="ui celled table ">
     		<thead>
@@ -103,25 +102,6 @@
 					<td ng-bind = "umpire.umpire_id"></td>
 					<td ng-bind = "umpire.umpire_name"></td>
 					<td ng-bind = "umpire.position"></td>
-				</tr>
-			</tbody>
-   		</table>
-
-   		<table ng-hide = "show[5]" class="ui celled table">
-    		<thead>
-    			<tr>
-    				<th>Broadcast ID</th>
-    				<th>Game ID</th>
-    				<th>Type</th>
-    				<th>Broacast URL</th>
-    			</tr>
-    		</thead>
-    		<tbody>
-				<tr ng-repeat="broadcast in broadcasts">
-					<td ng-bind = "broadcast.broadcast_id"></td>
-					<td ng-bind = "broadcast.game_id"></td>
-					<td ng-bind = "broadcast.type"></td>
-					<td ng-bind = "broadcast.broadcast_URL"></td>
 				</tr>
 			</tbody>
    		</table>
