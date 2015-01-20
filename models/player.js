@@ -12,7 +12,7 @@ exports.Player = function(Sequelize, sequelize){
     weight: Sequelize.INTEGER,
     batting: {
     	type:   Sequelize.ENUM,
-    	values: ['left', 'right']
+    	values: ['L', 'R']
     }
   },{
     tableName: 'player'
