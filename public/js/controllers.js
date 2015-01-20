@@ -126,6 +126,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     }
 }).controller('show_team', function ($scope, $http, $location, $window, $routeParams) {
     $scope.player_add = true;
+    var player_count;
     $http({ method:"GET", url:'/team/show_team/' + $routeParams.id }).success(function(result){
         var team = result.msg;
         $scope.team_name = team.team_name;
@@ -158,6 +159,11 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
         else{
             alert("Select league to enter");
         }        
+    }
+    $scope.delete_stat = function(id){
+        $http({ method:"POST", url:'/player/delete_player/' + id  }).success(function(result){
+            $window.location.reload();
+        });
     }
     $scope.add_player = function(){
         if(($scope.player_name != null)&&($scope.position != null)){

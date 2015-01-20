@@ -1,5 +1,6 @@
 var _ = require('underscore');
 var Player = require('../models').Player;
+var Ban = require('../models').Ban;
 
 exports.add_player = function(req, res){
 	Player.create({
@@ -14,6 +15,21 @@ exports.add_player = function(req, res){
 		res.json({ msg: "Success on adding player " + result.player_name });
 	});
 }
+
+exports.delete_player = function(req, res){
+	Ban.destroy({
+		where: {
+			player_id: req.params.player_id,
+		}
+	}).then(Player.destroy({
+		where: {
+			player_id: req.params.player_id,
+		}
+	})).then(function(result){
+		res.json({msg: "Clear player!"});
+	});
+}
+
 
 exports.list_player = function(req, res){
 	Player.findAll({ where:{ team_id: req.params.team_id } }).then(function(result){

@@ -33,13 +33,12 @@
 		        </tbody>
 			</table>
 		</div>
-		<div class="rightm">
+		<div class="rightm" >
 			<table class="ui celled table tsize">
 		        <thead>
 		            <tr>
-		                  <th class="tableform" colspan="6">Player Information
-                          </th>
-		            </tr>                    
+		                  <th class="tableform" colspan="7">Player Information
+		            </tr>   
 		            <tr>
 		                <th>Name</th>
                         <th>Postion</th>
@@ -47,20 +46,22 @@
                         <th>Height</th>
                         <th>Weight</th>
                         <th>Batting</th>
+                        <th></th>
 		            </tr>
 		        </thead>
 		        <tbody>
 		            <tr ng-repeat="player in players">
-		                <td> <span ng-bind="player.player_name"></span> </td>
+		                <td><span ng-bind="player.player_name"></span> </td>
                         <td><span ng-bind="player.position"></span></td>
                         <td><span ng-bind="player.age"></span></td>
                         <td><span ng-bind="player.height"></span></td>
                         <td><span ng-bind="player.weight"></span></td>
                         <td><span ng-bind="player.batting"></span></td>
-		            </tr>
+                        <td><button class="ui button" ng-click="delete_stat(player.player_id)"> <i class="icon remove"></i>Delete</button></td>
+                    </tr>
 		        </tbody>
 			</table>
-		</div>  	
+		</div>	
   	</div>
 
   	<!-- <div class="ui teal leftm" width="60%">
