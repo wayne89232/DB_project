@@ -15,6 +15,17 @@ exports.add_player = function(req, res){
 	});
 }
 
+exports.delete_player = function(req, res){
+	Player.destroy({
+		where: {
+			player_id: req.params.player_id,
+		}
+	}).then(function(result){
+		res.json({msg: "Clear player!"});
+	});
+}
+
+
 exports.list_player = function(req, res){
 	Player.findAll({ where:{ team_id: req.params.team_id } }).then(function(result){
 		_.map(result, function(result){

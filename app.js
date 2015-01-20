@@ -72,6 +72,7 @@ app.get('/league/show_league/:league_id', league.show_league);
 
 app.post('/player/add_player', player.add_player);
 app.get('/player/list_player/:team_id', player.list_player);
+app.post('/player/delete_player/:player_id', player.delete_player);
 
 app.post('/records/add_stat/:player_id/:game_id', records.add_stat);
 app.get('/records/show_stat/:player_id/:game_id', records.show_stat);
