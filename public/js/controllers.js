@@ -434,7 +434,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
                 data: data
             }).then(function(result){
                 $window.location.reload();
-                $location.path('/add_ban');
+                $location.path('/add');
             });
         }
         else{
@@ -453,7 +453,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
                 data: data
             }).then(function(result){
                 $window.location.reload();
-                $location.path('/add_umpire');
+                $location.path('/add');
             });
         }
         else{

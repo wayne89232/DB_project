@@ -1,5 +1,6 @@
 var Games = require("../models").Games;
 var Team = require("../models").Team;
+var Umpire_game = require("../models").Umpire_game;
 var _ = require('underscore');
 var async = require('async');
 
@@ -42,28 +43,24 @@ exports.show_game = function(req, res){
 		res.json({ msg: game.dataValues });
 	});
 }
-
-
-			// var end = false;
-			// async.parallel(
-			// 	[
-			// 		function(callback){
-			// 			Team.find({where: { team_id: game_stat.home_team_id }}).then(function(result2){
-			// 				callback(null, result2.dataValues);
-			// 			});
-			// 		},
-			// 		function(callback){
-			// 			Team.find({where: { team_id: game_stat.away_team_id }}).then(function(result3){
-			// 				callback(null, result3.dataValues);
-			// 			});
-			// 		}
-			// 	],
-			// 	function(err, result){
-			// 		game_rec.push(game_stat);
-			// 		game_rec.push(result[0]);
-			// 		game_rec.push(result[1]);
-			// 		end = true;
-			// 	}
-			// );
-			// while(end == false){console.log(123);};
-			// console.log(game_rec);
+exports.add_umpire = function(req, res){
+	Umpire_game.create({
+		umpire_id: req.params.umpire_id,
+		game_id: req.params.game_id
+	}).then(function(result){
+		res.json({msg: "Umpire"+req.params.umpire_id +" add to Game"+ req.params.game_id});
+	});
+}
+exports.show_umpire = function(req, res){
+	Umpire_game.findAll({
+		where: {
+			game_id: req.params.game_id
+		}, 
+		include: [Umpire]
+	}).then(function(result){
+		umpires = _.map(result, function(result){
+			return result.dataValues.Umpire.dataValues; 
+		});
+		res.json({ msg: umpires });
+	});
+}
