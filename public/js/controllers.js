@@ -356,12 +356,103 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
 }).controller('Add', function ($scope, $http, $location, $window) {
     $scope.current = 0;
     $scope.show = [false, true, true, true, true, true, true, true];
-
+    $scope.league_pick = true;
+    $scope.leagues = [];
+    $http({ method:"GET", url:'/league/list_league' }).success(function(leagues){
+        $scope.leagues = leagues.msg;
+    });
+    $scope.fields = [];
+    $http({ method:"GET", url:'/field/list_field' }).success(function(fields){
+        $scope.fields = fields.msg;
+    });
     $scope.show_change = function(num){
         if(num != $scope.current){
             $scope.show[$scope.current] = true;
             $scope.show[num] = false;
             $scope.current = num;
+        }
+    }
+    $scope.league_change = function(){
+        $scope.league_pick = false;
+        $http({ method:"GET", url:'/team/list_team_by_league/' + $scope.in_league }).success(function(teams){
+            $scope.teams = teams.msg;
+        });            
+    }
+    $scope.add_league = function(){
+        if($scope.league != null && $scope.city0 != null && $scope.year != null ){
+            var data = {
+                name: $scope.league, 
+                city: $scope.city0,
+                year: $scope.year
+            };
+            $http({
+                method: "POST", 
+                url: '/api/add_league', 
+                data: data
+            }).then(function(result){
+                $window.location.reload();
+                $location.path('/add');
+            });
+        }
+        else{
+            alert("Fill in all entities!");
+        }
+    }
+    $scope.add_team = function(){
+        if($scope.team1 != null && $scope.school1 != null){
+            var data = {
+                name: $scope.team1, 
+                school: $scope.school1
+            };
+            $http({
+                method: "POST", 
+                url: '/team/add_team', 
+                data: data
+            }).then(function(result){
+                $window.location.reload();
+                $location.path('/add');
+            });
+        }
+        else{
+            alert("Fill in all entities!");
+        }
+    }
+    $scope.add_game = function(){
+        if($scope.home_team == $scope.away_team){
+            alert("Teams should be different!");
+        }
+        else if($scope.home_team != null && $scope.away_team != null && 
+            $scope.home_team_score != null && $scope.away_team_score != null){
+            var data1 = {
+                league_id: $scope.in_league,
+                home_team_id: $scope.home_team,
+                away_team_id: $scope.away_team,
+                field_id: $scope.field,
+                home_team_score: $scope.home_team_score,
+                away_team_score: $scope.away_team_score
+            };
+            $http({
+                method: "POST", 
+                url: '/game/add_game', 
+                data: data1
+            }).then(function(result){
+                var data2 = {
+                    game: result.game_id,
+                    type: $scope.type2,
+                    URL: $scope.URL
+                };
+                $http({
+                method: "POST", 
+                url: '/broadcast/add_broadcast', 
+                data: data2
+                })
+            }).then(function(result){
+                $window.location.reload();
+                $location.path('/add');
+            });
+        }
+        else{
+            alert("Fill in all entities!");
         }
     }
     $scope.add_city = function(){
@@ -383,9 +474,9 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
         }
     }
     $scope.add_school = function(){
-        if($scope.school != null){
+        if($scope.school4 != null){
             var data = {
-                name: $scope.school
+                name: $scope.school4
             };
             $http({
                 method: "POST", 
@@ -401,10 +492,10 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
         }
     }
     $scope.add_field = function(){
-        if($scope.city5 != null && $scope.type != null && $scope.distance != null ){
+        if($scope.city5 != null && $scope.type5 != null && $scope.distance != null ){
             var data = {
                 city: $scope.city5, 
-                type: $scope.type,
+                type: $scope.type5,
                 distance: $scope.distance
             };
             $http({

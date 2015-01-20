@@ -103,6 +103,7 @@ app.get('/ban/list_ban', api.list_ban);
 app.post('/api/add_umpire', api.add_umpire);
 app.get('/umpire/list_umpire', api.list_umpire);
 
+app.post('/broadcast/add_broadcast', api.add_broadcast);
 app.get('/broadcast/list_broadcast', api.list_broadcast);
 
 // redirect all others to the index (HTML5 history)
