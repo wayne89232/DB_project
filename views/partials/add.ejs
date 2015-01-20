@@ -1,0 +1,93 @@
+<div class="ui tabular menu">
+	<a class="item" ng-click="show_change(0)">League</a>
+	<a class="item" ng-click="show_change(1)">Team</a>
+	<a class="item" ng-click="show_change(2)">Game</a>
+	<a class="item" ng-click="show_change(3)">City</a>
+	<a class="item" ng-click="show_change(4)">School</a>
+	<a class="item" ng-click="show_change(5)">Field</a>
+	<a class="item" ng-click="show_change(6)">Ban</a>
+	<a class="item" ng-click="show_change(7)">Umpire</a>
+</div>
+<div class="column ui teal mid addingb">
+    <form ng-hide="show[3]" action="" class="ui">
+        <div class="field">
+            City Name<input type="text" ng-model="city3">
+        </div>
+     	<button class="ui button" ng-click="add_city()">Send</button>
+    </form>
+
+    <form ng-hide="show[4]" action="" class="ui">
+        <div class="field">
+           	School Name<input type="text" ng-model="school">
+        </div>
+        <button class="ui button" ng-click="add_school()">Send</button>
+    </form>
+
+    <form ng-hide="show[5]" action="" class="ui">
+        <div class="field">
+            City Name<input type="text" ng-model="city5">
+        </div>
+        <div class="field">
+            Type
+            <select ng-model="type">
+                <option value="">Select Type</option>
+                <option>type1</option>
+                <option>type2</option>
+            </select>
+        </div>
+        <div class="field">
+            Center Distance<input type="text" ng-model="distance">
+        </div>
+        <button class="ui button" ng-click="add_field()">Send</button>
+    </form>
+
+    <form ng-hide="show[6]" action="" class="ui">
+        <div class="field">
+            Player Name<input type="text" ng-model="player6">
+        </div>
+        <div class="field">
+            Game <input type="text" ng-model="game6">
+        </div>
+        <div class="field">
+            Ban Game Num<input type="text" ng-model="num">
+        </div>
+        <div class="field">
+            Description<input type="text" ng-model="description">
+        </div>
+        <button class="ui button" ng-click="add_ban()">Send</button>
+    </form>
+
+    <form ng-hide="show[7]" action="" class="ui">
+		<div class="field">
+			Umpire Name<input type="text" ng-model="umpire">
+		</div>
+		<div class="field">
+			Position
+			<select ng-model="position">
+				<option value="">Select position</option>
+				<option>HP</option>
+				<option>1B</option>
+				<option>2B</option>
+				<option>3B</option>
+				<option>LF</option>
+				<option>RF</option>
+			</select>
+		</div>
+		<button class="ui button" ng-click="add_umpire()">Send</button>
+	</form>
+</div>
+
+<script type="text/javascript">
+	$(document)
+  	.ready(function(){
+	$('.menu a.item')
+  		.on('click', function() {
+			$(this)
+			.addClass('active')
+			.closest('.ui.menu')
+			.find('.item')
+			.not($(this))
+			.removeClass('active');
+  		});
+  	});
+</script>

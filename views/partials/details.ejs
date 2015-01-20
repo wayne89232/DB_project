@@ -1,0 +1,145 @@
+<div class="row">
+	<div class="partialleft">
+		<div class="sidebar">
+			<div class="ui vertical demo menu">
+				<div class="item">
+					<div class="ui transparent icon input">
+						<input type="text" placeholder="Search...">
+						<i class="search icon"></i>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+	<div class="9u content content-right partialright">
+		<div class="ui tabular menu">
+			<a class="active item" ng-click="show_change(0)">City</a>
+			<a class="item" ng-click="show_change(1)">School</a>
+			<a class="item" ng-click="show_change(2)">Field</a>
+			<a class="item" ng-click="show_change(3)">Ban</a>
+			<a class="item" ng-click="show_change(4)">Umpire</a>
+			<a class="item" ng-click="show_change(5)">Braoadcast</a>
+		</div>
+    	<table ng-hide = "show[0]" class="ui celled table ">
+    		<thead>
+    			<tr>
+    				<th>CityID</th>
+    				<th>CityName</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+				<tr ng-repeat="city in cities">
+					<td ng-bind = "city.city_id"></td>
+					<td ng-bind = "city.city_name"></td>
+				</tr>
+			</tbody>
+   		</table>
+
+   		<table ng-hide = "show[1]" class="ui celled table">
+    		<thead>
+    			<tr>
+    				<th>SchoolID</th>
+    				<th>SchoolName</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+				<tr ng-repeat="school in schools">
+					<td ng-bind = "school.school_id"></td>
+					<td ng-bind = "school.school_name"></td>
+				</tr>
+			</tbody>
+   		</table>
+
+   		<table ng-hide = "show[2]" class="ui celled table">
+    		<thead>
+    			<tr>
+    				<th>FieldID</th>
+    				<th>CityID</th>
+    				<th>Field Type</th>
+    				<th>Center Distance</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+				<tr ng-repeat="field in fields">
+					<td ng-bind = "field.field_id"></td>
+					<td ng-bind = "field.city_id"></td>
+					<td ng-bind = "field.type"></td>
+					<td ng-bind = "field.center_distance"></td>
+				</tr>
+			</tbody>
+   		</table>
+
+   		<table ng-hide = "show[3]" class="ui celled table">
+    		<thead>
+    			<tr>
+    				<th>Ban ID</th>
+    				<th>Player ID</th>
+    				<th>Game ID</th>
+    				<th>Game Num</th>
+    				<th>Description</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+				<tr ng-repeat="ban in bans">
+					<td ng-bind = "ban.ban_id"></td>
+					<td ng-bind = "ban.player_id"></td>
+					<td ng-bind = "ban.game_id"></td>
+					<td ng-bind = "ban.game_num"></td>
+					<td ng-bind = "ban.description"></td>
+				</tr>
+			</tbody>
+   		</table>
+
+   		<table ng-hide = "show[4]" class="ui celled table">
+    		<thead>
+    			<tr>
+    				<th>Umpire ID</th>
+    				<th>Umpire Name</th>
+    				<th>Postion</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+				<tr ng-repeat="umpire in umpires">
+					<td ng-bind = "umpire.umpire_id"></td>
+					<td ng-bind = "umpire.umpire_name"></td>
+					<td ng-bind = "umpire.position"></td>
+				</tr>
+			</tbody>
+   		</table>
+
+   		<table ng-hide = "show[5]" class="ui celled table">
+    		<thead>
+    			<tr>
+    				<th>Broadcast ID</th>
+    				<th>Game ID</th>
+    				<th>Type</th>
+    				<th>Broacast URL</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+				<tr ng-repeat="broadcast in broadcasts">
+					<td ng-bind = "broadcast.broadcast_id"></td>
+					<td ng-bind = "broadcast.game_id"></td>
+					<td ng-bind = "broadcast.type"></td>
+					<td ng-bind = "broadcast.broadcast_URL"></td>
+				</tr>
+			</tbody>
+   		</table>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	$(document)
+  	.ready(function(){
+	$('.menu a.item')
+  		.on('click', function() {
+			$(this)
+			.addClass('active')
+			.closest('.ui.menu')
+			.find('.item')
+			.not($(this))
+			.removeClass('active');
+  		});
+  	});
+</script>
