@@ -4,7 +4,8 @@ exports.Field = function(Sequelize, sequelize){
     city_id: Sequelize.INTEGER,
     type: {
     	type:   Sequelize.ENUM,
-    	values: ['type1', 'type2']
+    	values: ['Wooden', 'Jewel box', 'Multi-purpose', 'Modern','Temporary and converted',
+        'Indoor', 'Retractable-roof', 'Retro-classic', 'Retro-modern', 'Contemporary']
     }, 
     center_distance: Sequelize.INTEGER
   },{
