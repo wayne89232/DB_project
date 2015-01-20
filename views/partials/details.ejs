@@ -22,13 +22,11 @@
     	<table ng-hide = "show[0]" class="ui celled table ">
     		<thead>
     			<tr>
-    				<th>CityID</th>
     				<th>CityName</th>
     			</tr>
     		</thead>
     		<tbody>
 				<tr ng-repeat="city in cities">
-					<td ng-bind = "city.city_id"></td>
 					<td ng-bind = "city.city_name"></td>
 				</tr>
 			</tbody>
@@ -37,13 +35,11 @@
    		<table ng-hide = "show[1]" class="ui celled table">
     		<thead>
     			<tr>
-    				<th>SchoolID</th>
     				<th>SchoolName</th>
     			</tr>
     		</thead>
     		<tbody>
 				<tr ng-repeat="school in schools">
-					<td ng-bind = "school.school_id"></td>
 					<td ng-bind = "school.school_name"></td>
 				</tr>
 			</tbody>
@@ -52,15 +48,13 @@
    		<table ng-hide = "show[2]" class="ui celled table">
     		<thead>
     			<tr>
-    				<th>FieldID</th>
-    				<th>CityID</th>
+    				<th>CityID</th><!--city_name-->
     				<th>Field Type</th>
     				<th>Center Distance</th>
     			</tr>
     		</thead>
     		<tbody>
 				<tr ng-repeat="field in fields">
-					<td ng-bind = "field.field_id"></td>
 					<td ng-bind = "field.city_id"></td>
 					<td ng-bind = "field.type"></td>
 					<td ng-bind = "field.center_distance"></td>
@@ -71,10 +65,10 @@
    		<table ng-hide = "show[3]" class="ui celled table">
     		<thead>
     			<tr>
-    				<th>Ban ID</th>
-    				<th>Player ID</th>
-    				<th>Game ID</th>
+    				<th>Ban Num</th>
+    				<th>Player ID</th><!--player_name-->
     				<th>Game Num</th>
+    				<th>Banned Game Num</th>
     				<th>Description</th>
     			</tr>
     		</thead>
@@ -92,14 +86,12 @@
    		<table ng-hide = "show[4]" class="ui celled table">
     		<thead>
     			<tr>
-    				<th>Umpire ID</th>
     				<th>Umpire Name</th>
     				<th>Postion</th>
     			</tr>
     		</thead>
     		<tbody>
 				<tr ng-repeat="umpire in umpires">
-					<td ng-bind = "umpire.umpire_id"></td>
 					<td ng-bind = "umpire.umpire_name"></td>
 					<td ng-bind = "umpire.position"></td>
 				</tr>
