@@ -1,7 +1,25 @@
 'use strict';
 
 angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function ($scope, $http) {
-
+    $scope.games = [];    
+    $http({ method:"GET", url:'/team/list_team' }).success(function(teams){
+        $scope.teams = teams.msg;
+    });    
+    $http({ method:"GET", url:'/game/list_game' }).success(function(result){
+        $scope.games = result.msg;
+        var game_stat = [];
+        _.map($scope.games, function(game){
+            var arr = [];
+            arr.push(game);
+            arr.push( _.find($scope.teams, function(go){ return  go.team_id == game.home_team_id; }));
+            arr.push( _.find($scope.teams, function(go){ return  go.team_id == game.away_team_id; }));
+            game_stat.push(arr);
+        });
+        if( game_stat.length > 5 ){
+            game_stat = _.first(game_stat, 5);
+        }
+        $scope.games = game_stat;
+    });
 }).controller('League', function ($scope, $http, $location, $window) {
     $scope.leagues = [];
     $http({ method:"GET", url:'/league/list_league' }).success(function(leagues){
