@@ -1,3 +1,30 @@
-<div ng-bind="league_name">
-	
+<div ng-bind="league_name"></div>
+<div class="ui two column stackable center aligned grid segment">
+  	<div class="column">
+    	<div class="ui button">Games</div>
+
+  	</div>
+  	<div class="ui vertical divider"></div>
+  	<div class="column">
+	<div class="content content-right partialright">
+		<table class="ui celled table ">
+			<thead>
+				<tr>
+					<th>TeamID</th>
+					<th>Team Name</th>
+					<th>School ID</th>
+					<th>Detail</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="team in teams">						
+						<td ng-bind = "team.team_id"></td>
+						<td ng-bind = "team.team_name"></td>
+						<td ng-bind = "team.school_id"></td>
+						<td><a ng-click="view(team.team_id)">Details</a></td>
+				</tr>
+			</tbody>
+			</table>
+	</div>
+  	</div>
 </div>

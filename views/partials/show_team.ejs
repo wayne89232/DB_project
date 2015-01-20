@@ -1,35 +1,39 @@
-<div ng-bind="team_name"></div>
+<header>
+     <div class="centerx">Team <
+        <span ng-bind="team_name">  </span>
+                             >
+     </div>
+</header>
 <div class="leftm">
-<table class="ui celled table ">
-                <thead>
-                    <tr class="tableform">
-                        <th>League Participated</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="league in par_leagues">
-                        <td> <span ng-bind="league.league_name"></span> </td>
-                    </tr>
-                </tbody>
-</table>
+	<table class="ui celled table ">
+        <thead>
+            <tr class="tableform">
+				<th>League Participated</th>
+            </tr>
+		</thead>
+		<tbody>
+        	<tr ng-repeat="league in par_leagues">
+                <td> <span ng-bind="league.league_name"></span> </td>
+            </tr>
+        </tbody>
+	</table>
 </div>
-<div class="rightm">
-<table class="ui celled table ">
-                <thead>
-                    <tr >
-                          <th class="tableform" colspan="2">Player Information</th>
-                    </tr>                    
-
-                    <tr>
-                        <th>Player Postion</th>
-                        <th>Player Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="player in players">
-                        <td> <span ng-bind="player.position"></span> </td>
-                        <td><span ng-bind="player.player_name"></span></td>
-                    </tr>
-                </tbody>
-</table>
+	<div class="rightm">
+		<table class="ui celled table ">
+            <thead>
+	            <tr>
+                      <th class="tableform" colspan="2">Player Information</th>
+                </tr>                    
+                <tr>
+	                <th>Player Postion</th>
+                    <th>Player Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="player in players">
+                    <td> <span ng-bind="player.position"></span> </td>
+                    <td><span ng-bind="player.player_name"></span></td>
+                </tr>
+            </tbody>
+	</table>
 </div>

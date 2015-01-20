@@ -1,6 +1,6 @@
 .TitTBSD
 { 
-   width:1349px;
+    width:1349px;
    height:1.1em;
    border:6em;
    font-size:200%;
@@ -101,4 +101,13 @@
    margin-top: 2%;
    width:70%;
    float:right;
+}
+.centerx
+{
+  margin: 0 auto;
+  font-weight: bold;
+  font-family: arial;
+  font-size: 200%;
+  padding-left: 40%;
+  padding-top: 3%;
 }

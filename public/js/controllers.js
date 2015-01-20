@@ -188,10 +188,16 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
         $location.path('/team/'+id);
     }
 }).controller('show_league', function ($scope, $http, $location, $window, $routeParams) {
+    $http({ method:"GET", url:'/team/list_team_by_league/' + $routeParams.id }).success(function(teams){
+        $scope.teams = teams.msg;
+    });
     $http({ method:"GET", url:'/league/show_league/' + $routeParams.id }).success(function(result){
         var league = result.msg;
         $scope.league_name = league.league_name;
     });
+    $scope.view = function(id){
+        $location.path('/team/'+id);
+    }
 }).controller('show_team', function ($scope, $http, $location, $window, $routeParams) {
     $scope.player_add = true;
     $http({ method:"GET", url:'/team/show_team/' + $routeParams.id }).success(function(result){
