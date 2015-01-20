@@ -13,21 +13,17 @@ config(function ($routeProvider, $locationProvider) {
       templateUrl: 'partials/home',
       controller: 'AppCtrl'
     }).
+    when('/add', {
+      templateUrl: 'partials/add',
+      controller: 'AppCtrl'
+    }).
     when('/League', {
       templateUrl: 'partials/league',
       controller: 'League'
     }).
     when('/Team', {
-      templateUrl: 'partials/add_team',
+      templateUrl: 'partials/team',
       controller: 'Team'
-    }).
-    when('/league/:id', {
-      templateUrl: 'partials/show_league',
-      controller: 'show_league'
-    }).
-    when('/team/:id', {
-      templateUrl: 'partials/show_team',
-      controller: 'show_team'
     }).
     when('/Game', {
       templateUrl: 'partials/game_list',
@@ -57,13 +53,21 @@ config(function ($routeProvider, $locationProvider) {
       templateUrl: 'partials/broadcast',
       controller: 'Broadcast'
     })
+    .when('/game/:id', {
+      templateUrl: 'partials/game_stat',
+      controller: 'game_stat'
+    })
+    .when('/team_add/:id', {
+      templateUrl: 'partials/show_team',
+      controller: 'show_team'
+    })
     .when('/add_league', {
       templateUrl: 'partials/add_league',
       controller: 'League'
     })
-    .when('/game/:id', {
-      templateUrl: 'partials/game_stat',
-      controller: 'game_stat'
+    .when('/add_team', {
+      templateUrl: 'partials/add_team',
+      controller: 'Team'
     })
     .when('/add_school', {
       templateUrl: 'partials/add_school',
@@ -86,7 +90,7 @@ config(function ($routeProvider, $locationProvider) {
       controller: 'Umpire'
     })
     .otherwise({
-      redirectTo: '/'
+      redirectTo: '/home'
     });
 
   

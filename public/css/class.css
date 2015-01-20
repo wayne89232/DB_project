@@ -13,8 +13,8 @@
 }
 .addingb
 {
-   padding-left: 15%;
-   width:1000px;
+   /*padding-left: 15%;*/
+   width: 80%;
 }
 .Top
 {
@@ -23,7 +23,7 @@
 .mid
 {
    margin: 0px auto;
-   padding-left: 15%;
+   /*padding-left: 15%;*/
 }
 .Homepage
 {
@@ -44,7 +44,7 @@
 }
 .partialleft
 {
-	margin-top:  1.5	%;
+	margin-top:  1.5%;
 	margin-left: 3%;
 	padding left: 0.5em;
 

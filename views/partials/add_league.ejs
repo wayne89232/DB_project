@@ -1,25 +1,15 @@
-<div class="ui page grid">
-    <div class="column padleft">
-        <div class="ui teal addingb">
-
-            <form action="" class="ui ">
-                <div class="field">
-                    League name<input type="text" ng-model="name">
-                </div>
-                <div class="field">
-                    City<input type="text" ng-model="city">
-                </div>
-                <div class="field">
-                    Year<input type="text" ng-model="year">
-                </div>
-                <button class="ui button" ng-click="add_league()">Send</button>
-            </form>
+<div class="column ui teal mid addingb">
+    <form action="" class="ui ">
+        <div class="field">
+            League name<input type="text" ng-model="name">
         </div>
-    </div>
-    <div>
-        <div ng-repeat="league in leagues">
-            <span ng-click = "view(league.league_id)" ng-bind = "league.league_name"><span>
+        <div class="field">
+            City<input type="text" ng-model="city">
         </div>
-    </div>
+        <div class="field">
+            Year<input type="text" ng-model="year">
+        </div>
+        <button class="ui button" ng-click="add_league()">Send</button>
+    </form>
 </div>
 

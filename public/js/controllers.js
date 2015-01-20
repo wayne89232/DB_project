@@ -177,7 +177,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
                 data: data
             }).then(function(result){
                 $window.location.reload();
-                $location.path('/Team');
+                $location.path('/add_team');
             });
         }
         else{
@@ -253,7 +253,8 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     }
 }).controller('Game', function ($scope, $http, $location, $window, $routeParams) {
     $scope.leagues = [];
-    $scope.games = [];
+    $scope.games = [];    
+    $scope.game_add = true;
     $scope.league_pick = true;
     $http({ method:"GET", url:'/team/list_team' }).success(function(teams){
         $scope.teams = teams.msg;
@@ -278,6 +279,9 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
         $http({ method:"GET", url:'/team/list_team_by_league/' + $scope.in_league }).success(function(teams){
             $scope.teams = teams.msg;
         });            
+    }
+    $scope.show_add_team = function(){
+        $scope.game_add = !($scope.game_add);
     }
     $scope.add_game = function(){
         if($scope.home_team == $scope.away_team){
