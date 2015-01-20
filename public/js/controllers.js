@@ -603,7 +603,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     }
 }).controller('Details', function ($scope, $http, $location, $window) {
     $scope.current = 0;
-    $scope.show = [false, true, true, true, true, true];
+    $scope.show = [false, true, true, true, true];
 
     $scope.cities = [];
     $http({ method:"GET", url:'/city/list_city' }).success(function(cities){
@@ -629,12 +629,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     $http({ method:"GET", url:'/umpire/list_umpire' }).success(function(umpires){
         $scope.umpires = umpires.msg;
     });
-
-    $scope.broadcasts = [];
-    $http({ method:"GET", url:'/broadcast/list_broadcast' }).success(function(broadcasts){
-        $scope.broadcasts = broadcasts.msg;
-    });
-
+    
     $scope.show_change = function(num){
         if(num != $scope.current){
             $scope.show[$scope.current] = true;
