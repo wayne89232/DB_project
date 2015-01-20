@@ -18,7 +18,7 @@
     			<thead>
     				<tr>
     					<th>Name</th>
-    					<th>Location</th>
+    					<th>Teams</th>
     					<th>Year</th>
     					<th>Detail</th>
     				</tr>
@@ -26,7 +26,7 @@
     			<tbody>
 					<tr ng-repeat="league in leagues  | filter:search">
 						<td ng-bind = "league.league_name"></td>
-						<td ng-bind = "league.city_id"></td>
+						<td ng-bind = "league.team_num"></td>
 						<td ng-bind = "league.year"></td>
 						<td><a ng-click="view(league.league_id)">Details</a></td>
 					</tr>

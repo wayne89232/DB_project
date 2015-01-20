@@ -10,15 +10,13 @@
 		<table class="ui celled table ">
 			<thead>
 				<tr>
-					<th>TeamID</th>
 					<th>Team Name</th>
 					<th>School ID</th>
 					<th>Detail</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="team in teams">						
-						<td ng-bind = "team.team_id"></td>
+				<tr ng-repeat="team in teams">
 						<td ng-bind = "team.team_name"></td>
 						<td ng-bind = "team.school_id"></td>
 						<td><a ng-click="view(team.team_id)">Details</a></td>

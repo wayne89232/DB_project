@@ -1,39 +1,63 @@
-<header>
-     <div class="centerx">Team <
-        <span ng-bind="team_name">  </span>
-                             >
-     </div>
-</header>
-<div class="leftm">
-	<table class="ui celled table ">
-        <thead>
-            <tr class="tableform">
-				<th>League Participated</th>
-            </tr>
-		</thead>
-		<tbody>
-        	<tr ng-repeat="league in par_leagues">
-                <td> <span ng-bind="league.league_name"></span> </td>
-            </tr>
-        </tbody>
-	</table>
+<div ng-bind="team_name"></div>
+<div class="ui center aligned segment">
+  	<div class="ui">
+		<div class="leftm">
+			<table class="ui celled table ">
+		        <thead>
+		            <tr class="tableform">
+						<th>League Participated</th>
+		            </tr>
+				</thead>
+				<tbody>
+		        	<tr ng-repeat="league in par_leagues">
+		                <td> 
+		                	<span ng-bind="league.league_name"></span>
+		                	<i class="remove icon rightm" ng-click="out(league.league_id)"></i>
+		                </td>
+		            </tr>
+		        </tbody>
+			</table>
+		</div>
+		<div class="rightm">
+			<table class="ui celled table ">
+		        <thead>
+		            <tr>
+		                  <th class="tableform" colspan="2">Player Information</th>
+		            </tr>                    
+		            <tr>
+		                <th>Player Postion</th>
+		                <th>Player Name</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <tr ng-repeat="player in players">
+		                <td> <span ng-bind="player.position"></span> </td>
+		                <td><span ng-bind="player.player_name"></span></td>
+		            </tr>
+		        </tbody>
+			</table>
+		</div>  	
+  	</div>
+
+  	
+  	<div class="ui teal leftm">
+  		<table class="ui celled table ">
+  			<thead><th class="tableform"><span class="ui header">Enter League</span></th></thead>
+			<tbody><tr><td>
+				<div class="ui">
+				    <form action="" class="ui form">
+				        <div class="field">
+				            <select ng-model="add_league">
+				                <option value="">Select league</option>
+				                <option ng-value="league.league_id" ng-repeat="league in leagues" ng-bind="league.league_name"></option>
+				            </select>
+				        </div>
+				        <button class="ui button" ng-click="add_to_league()">Go</button>
+				    </form>
+				</div>
+			</td></tr></tbody>
+		</table>
+  	</div>
 </div>
-	<div class="rightm">
-		<table class="ui celled table ">
-            <thead>
-	            <tr>
-                      <th class="tableform" colspan="2">Player Information</th>
-                </tr>                    
-                <tr>
-	                <th>Player Postion</th>
-                    <th>Player Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="player in players">
-                    <td> <span ng-bind="player.position"></span> </td>
-                    <td><span ng-bind="player.player_name"></span></td>
-                </tr>
-            </tbody>
-	</table>
-</div>
+
+

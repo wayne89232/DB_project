@@ -65,6 +65,7 @@ app.get('/team/show_team/:team_id', team.show_team);
 app.get('/team/team_league/:team_id', team.team_league);
 app.post('/team/add_to_league/:team_id/:league_id', team.add_to_league);
 app.get('/team/list_team_by_league/:league_id', team.list_team_by_league);
+app.get('/team/out_league/:team_id/:league_id', team.out_league);
 
 app.get('/league/list_league', league.list_league);
 app.get('/league/show_league/:league_id', league.show_league);
@@ -76,6 +77,8 @@ app.post('/records/add_stat/:player_id/:game_id', records.add_stat);
 app.get('/records/show_stat/:player_id/:game_id', records.show_stat);
 app.post('/records/add_stat2/:player_id/:game_id', records.add_stat2);
 app.get('/records/show_stat2/:player_id/:game_id', records.show_stat2);
+app.get('/records/remove_stat/:player_id/:game_id', records.remove_stat);
+app.get('/records/remove_stat2/:player_id/:game_id', records.remove_stat2);
 
 app.post('/game/add_game', game.add_game);
 app.get('/game/list_game', game.list_game);
