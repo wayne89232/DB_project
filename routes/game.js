@@ -27,6 +27,15 @@ exports.list_game = function(req, res){
 		res.json({ msg: games });
 	});
 }
+exports.list_game_by_league = function(req, res){
+	Games.findAll({ where:{ league_id: req.params.league_id } }).then(function(game){
+		games = _.map(game, function(result_t){
+			var game_stat = result_t.dataValues;
+			return game_stat;
+		});
+		res.json({ msg: games });
+	});
+}
 exports.show_game = function(req, res){
 	console.log(req.params.game_id);
 	Games.find( {where:{ game_id: req.params.game_id} }).then(function(game){

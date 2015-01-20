@@ -20,6 +20,9 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
         }
         $scope.games = game_stat;
     });
+    $scope.view = function(id){
+        $location.path('/team/'+id);
+    }
 }).controller('League', function ($scope, $http, $location, $window) {
     $scope.leagues = [];
     $http({ method:"GET", url:'/league/list_league' }).success(function(leagues){
@@ -95,12 +98,31 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
             });
         });
     });
+    $http({ method:"GET", url:'/team/list_team' }).success(function(teams){
+        $scope.allteams = teams.msg;
+    });    
+    $scope.games = [];
+    $http({ method:"GET", url:'/game/list_game_by_league/' + $routeParams.id }).success(function(result){
+        $scope.games = result.msg;
+        var game_stat = [];
+        _.map($scope.games, function(game){
+            var arr = [];
+            arr.push(game);
+            arr.push( _.find($scope.allteams, function(go){ return  go.team_id == game.home_team_id; }));
+            arr.push( _.find($scope.allteams, function(go){ return  go.team_id == game.away_team_id; }));
+            game_stat.push(arr);
+        });
+        $scope.games = game_stat;
+    });
     $http({ method:"GET", url:'/league/show_league/' + $routeParams.id }).success(function(result){
         var league = result.msg;
         $scope.league_name = league.league_name;
     });
     $scope.view = function(id){
         $location.path('/team/'+id);
+    }
+    $scope.view_game = function(id){
+        $location.path('/game/'+id);
     }
 }).controller('show_team', function ($scope, $http, $location, $window, $routeParams) {
     $scope.player_add = true;
