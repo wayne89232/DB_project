@@ -40,10 +40,12 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     $scope.team_add = true;
     $http({ method:"GET", url:'/team/list_team' }).success(function(teams){
         $scope.team_list = teams.msg;
+        _.map($scope.team_list, function(team){
+            $http({ method:"GET", url:'/player/list_player/' + team.team_id }).success(function(result){
+                team = _.extend(team, {player_num: result.msg.length});
+            });
+        });
     });
-    $scope.show_add_team = function(){
-        $scope.team_add = !($scope.team_add);
-    }
     $scope.add_team = function(){
         if($scope.name != null && $scope.school != null){
             var data = {
@@ -69,6 +71,11 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
 }).controller('show_league', function ($scope, $http, $location, $window, $routeParams) {
     $http({ method:"GET", url:'/team/list_team_by_league/' + $routeParams.id }).success(function(teams){
         $scope.teams = teams.msg;
+        _.map($scope.teams, function(team){
+            $http({ method:"GET", url:'/player/list_player/' + team.team_id }).success(function(result){
+                team = _.extend(team, {player_num: result.msg.length});
+            });
+        });
     });
     $http({ method:"GET", url:'/league/show_league/' + $routeParams.id }).success(function(result){
         var league = result.msg;
