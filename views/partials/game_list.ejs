@@ -1,11 +1,32 @@
 <h2>Game list</h2>
-<div ng-repeat="game in games" ng-click="view(game[0].game_id)">
-    <span ng-bind="game[1].team_name"></span>
-    <span ng-bind="game[0].home_team_score"></span>
-    :
-    <span ng-bind="game[2].team_name"></span>
-    <span ng-bind="game[0].away_team_score"></span>  
-</div>
+<table class="ui celled table ">
+                <thead>
+                    <tr class="tableform">
+                        <th>Home Team</th>
+                        <th>  Score  </th>
+                        <th>Away Team</th>
+                        <th>Game Stat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="game in games" ng-click="view(game[0].game_id)">
+                        <td> 
+                            <span ng-bind="game[1].team_name"></span>
+                        </td>
+                        <td>
+                            <span ng-bind="game[0].home_team_score"></span>
+                            :
+                            <span ng-bind="game[0].away_team_score"></span>  
+                        </td>
+                        <td>
+                            <span ng-bind="game[2].team_name"></span>
+                        </td>
+                        <td>
+                             <span>icon</span>
+                        </td>
+                    </tr>
+                </tbody>
+</table>
 
 <button class="ui button" ng-click="show_add_team()">Add Game</button>
 <div class="ui teal addingb" ng-hide="game_add">
