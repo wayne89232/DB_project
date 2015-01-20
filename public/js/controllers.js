@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function ($scope, $http) {
+angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function ($scope, $http, $location) {
     $scope.games = [];    
     $http({ method:"GET", url:'/team/list_team' }).success(function(teams){
         $scope.teams = teams.msg;
