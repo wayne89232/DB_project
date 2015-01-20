@@ -150,22 +150,13 @@ exports.add_pitching_record = function(req, res){
 }
 
 exports.add_ban = function(req, res){
-	Game.find({ where: { game_name: req.body.game } }).then(function(result1){
-		Player.find({ where: { player_name: req.body.player } }).then(function(result2){
-			if(_.size(result1) != 0 && _.size(result2) != 0 ){
-				Ban.create({
-					game_id: result1.game_id, 
-    				player_id: result2.player_id,
-					game_num: req.body.num,
-					description: req.body.description
-   				}).then(function(){
-					res.json({ msg: "Success on adding Ban "});
-				});
-			}
-			else{
-				res.json({ msg: "No such game or player " });
-			}
-		});
+	Ban.create({
+		game_id: req.body.game_id, 
+    	player_id: req.body.player_id,
+		game_num: req.body.num,
+		description: req.body.description
+   	}).then(function(){
+		res.json({ msg: "Success on adding Ban "});
 	});
 }
 
