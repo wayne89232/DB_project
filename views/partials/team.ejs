@@ -25,8 +25,13 @@
     			<tbody>
 					<tr ng-repeat="team in team_list  | filter:search">	
 							<td ng-bind = "team.team_name"></td>
+
 							<td ng-bind = "team.player_num"></td>
-							<td><a ng-click="view(team.team_id)">Details</a></td>
+							<td>
+                             <button class="ui button" ng-click=ng-click="view(team.team_id)">
+                             <i class="content icon "></i>Details
+                             </button>
+                            </td>				
 					</tr>
 				</tbody>
    			</table>
