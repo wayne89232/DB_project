@@ -1,8 +1,69 @@
 <h2>Game list</h2>
-<div ng-repeat="game in games" ng-click="view(game[0].game_id)">
-    <span ng-bind="game[1].team_name"></span>
-    <span ng-bind="game[0].home_team_score"></span>
-    :
-    <span ng-bind="game[2].team_name"></span>
-    <span ng-bind="game[0].away_team_score"></span>  
+<table class="ui celled table ">
+                <thead>
+                    <tr class="tableform">
+                        <th>Home Team</th>
+                        <th>  Score  </th>
+                        <th>Away Team</th>
+                        <th>Game Stat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="game in games" >
+                        <td> 
+                            <span ng-bind="game[1].team_name"></span>
+                        </td>
+                        <td>
+                            <span ng-bind="game[0].home_team_score"></span>
+                            :
+                            <span ng-bind="game[0].away_team_score"></span>  
+                        </td>
+                        <td>
+                            <span ng-bind="game[2].team_name"></span>
+                        </td>
+                        <td>
+                             <button class="ui button" ng-click="view(game[0].game_id)">
+                             <i class="content icon "></i>Details
+                             </button>
+                        </td>
+                    </tr>
+                </tbody>
+</table>
+
+<button class="ui button" ng-click="show_add_team()">Add Game</button>
+<div class="ui teal addingb" ng-hide="game_add">
+    <form action="" class="ui">
+        <div class="field">
+            <div class="field">
+                League
+                <select ng-model="in_league" ng-change="league_change()">
+                    <option value="">Select league</option>
+                    <option ng-value="league.league_id" ng-repeat="league in leagues" ng-bind="league.league_name"></option>
+                </select>
+            </div> 
+            <div class="field" ng-hide="league_pick">
+                Home team
+                <select ng-model="home_team">
+                    <option value="">Select team</option>
+                    <option ng-value="team.team_id" ng-repeat="team in teams" ng-bind="team.team_name"></option>
+                </select>
+                Score<input type="text" ng-model="home_team_score">                
+            </div>
+            <div class="field" ng-hide="league_pick">
+                Away team
+                <select ng-model="away_team">
+                    <option value="">Select team</option>
+                    <option ng-value="team.team_id" ng-repeat="team in teams" ng-bind="team.team_name"></option>
+                </select>               
+                Score<input type="text" ng-model="away_team_score">  
+            </div>
+            <div class="field">
+                Field<input type="text" ng-model="field">
+            </div>
+            <div class="field">
+                Broadcast<input type="text" ng-model="broadcast">
+            </div>                 
+        </div>
+        <button class="ui button" ng-click="add_game()">Go</button>
+    </form>
 </div>

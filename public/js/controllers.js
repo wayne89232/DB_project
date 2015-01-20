@@ -1,7 +1,28 @@
 'use strict';
 
 angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function ($scope, $http) {
-
+    $scope.games = [];    
+    $http({ method:"GET", url:'/team/list_team' }).success(function(teams){
+        $scope.teams = teams.msg;
+    });    
+    $http({ method:"GET", url:'/game/list_game' }).success(function(result){
+        $scope.games = result.msg;
+        var game_stat = [];
+        _.map($scope.games, function(game){
+            var arr = [];
+            arr.push(game);
+            arr.push( _.find($scope.teams, function(go){ return  go.team_id == game.home_team_id; }));
+            arr.push( _.find($scope.teams, function(go){ return  go.team_id == game.away_team_id; }));
+            game_stat.push(arr);
+        });
+        if( game_stat.length > 5 ){
+            game_stat = _.first(game_stat, 5);
+        }
+        $scope.games = game_stat;
+    });
+    $scope.view = function(id){
+        $location.path('/team/'+id);
+    }
 }).controller('League', function ($scope, $http, $location, $window) {
     $scope.leagues = [];
     $http({ method:"GET", url:'/league/list_league' }).success(function(leagues){
@@ -40,10 +61,12 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     $scope.team_add = true;
     $http({ method:"GET", url:'/team/list_team' }).success(function(teams){
         $scope.team_list = teams.msg;
+        _.map($scope.team_list, function(team){
+            $http({ method:"GET", url:'/player/list_player/' + team.team_id }).success(function(result){
+                team = _.extend(team, {player_num: result.msg.length});
+            });
+        });
     });
-    $scope.show_add_team = function(){
-        $scope.team_add = !($scope.team_add);
-    }
     $scope.add_team = function(){
         if($scope.name != null && $scope.school != null){
             var data = {
@@ -69,6 +92,27 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
 }).controller('show_league', function ($scope, $http, $location, $window, $routeParams) {
     $http({ method:"GET", url:'/team/list_team_by_league/' + $routeParams.id }).success(function(teams){
         $scope.teams = teams.msg;
+        _.map($scope.teams, function(team){
+            $http({ method:"GET", url:'/player/list_player/' + team.team_id }).success(function(result){
+                team = _.extend(team, {player_num: result.msg.length});
+            });
+        });
+    });
+    $http({ method:"GET", url:'/team/list_team' }).success(function(teams){
+        $scope.allteams = teams.msg;
+    });    
+    $scope.games = [];
+    $http({ method:"GET", url:'/game/list_game_by_league/' + $routeParams.id }).success(function(result){
+        $scope.games = result.msg;
+        var game_stat = [];
+        _.map($scope.games, function(game){
+            var arr = [];
+            arr.push(game);
+            arr.push( _.find($scope.allteams, function(go){ return  go.team_id == game.home_team_id; }));
+            arr.push( _.find($scope.allteams, function(go){ return  go.team_id == game.away_team_id; }));
+            game_stat.push(arr);
+        });
+        $scope.games = game_stat;
     });
     $http({ method:"GET", url:'/league/show_league/' + $routeParams.id }).success(function(result){
         var league = result.msg;
@@ -76,6 +120,9 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     });
     $scope.view = function(id){
         $location.path('/team/'+id);
+    }
+    $scope.view_game = function(id){
+        $location.path('/game/'+id);
     }
 }).controller('show_team', function ($scope, $http, $location, $window, $routeParams) {
     $scope.player_add = true;
@@ -375,7 +422,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
             alert("Teams should be different!");
         }
         else if($scope.home_team != null && $scope.away_team != null && 
-            $scope.home_team_score != null && $scope.away_team_score != null && $scope.type2 != null && $scope.URL != null){
+            $scope.home_team_score != null && $scope.away_team_score != null){
             var data1 = {
                 league_id: $scope.in_league,
                 home_team_id: $scope.home_team,
@@ -478,7 +525,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
                 data: data
             }).then(function(result){
                 $window.location.reload();
-                $location.path('/add_ban');
+                $location.path('/add');
             });
         }
         else{
@@ -497,7 +544,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
                 data: data
             }).then(function(result){
                 $window.location.reload();
-                $location.path('/add_umpire');
+                $location.path('/add');
             });
         }
         else{

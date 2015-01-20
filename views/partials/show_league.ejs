@@ -1,24 +1,55 @@
 <div ng-bind="league_name"></div>
 <div class="ui two column stackable center aligned grid segment">
   	<div class="column">
-    	<div class="ui button">Games</div>
+    	<div class="header">Games Played</div>
+		<table class="ui celled table ">
+            <thead>
+                <tr class="tableform">
+                    <th>Home Team</th>
+                    <th>  Score  </th>
+                    <th>Away Team</th>
+                    <th>Game Stat</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="game in games" >
+                    <td> 
+                        <span ng-bind="game[1].team_name"></span>
+                    </td>
+                    <td>
+                        <span ng-bind="game[0].home_team_score"></span>
+                        :
+                        <span ng-bind="game[0].away_team_score"></span>  
+                    </td>
+                    <td>
+                        <span ng-bind="game[2].team_name"></span>
+                    </td>
+                    <td>
+                         <button class="ui button" ng-click="view_game(game[0].game_id)">
+                         <i class="content icon "></i>Details
+                         </button>
+                    </td>
+                </tr>
+            </tbody>
+		</table>
 
   	</div>
   	<div class="ui vertical divider"></div>
   	<div class="column">
+  	<span>Participate Teams</span>
 	<div class="content content-right partialright">
 		<table class="ui celled table ">
 			<thead>
 				<tr>
 					<th>Team Name</th>
-					<th>School ID</th>
+					<th>Players</th>
 					<th>Detail</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="team in teams">
 						<td ng-bind = "team.team_name"></td>
-						<td ng-bind = "team.school_id"></td>
+						<td ng-bind = "team.player_num"></td>
 						<td><a ng-click="view(team.team_id)">Details</a></td>
 				</tr>
 			</tbody>
