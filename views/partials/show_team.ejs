@@ -4,12 +4,20 @@ Participate:
 	<span ng-bind="league.league_name"></span>
 </div>
 Players:
-<div ng-repeat="player in players">
-    <div>
-        <span ng-bind="player.position"></span> 
-        <span ng-bind="player.player_name"></span>
-    </div>
-</div>
+<table class="ui celled table ">
+                <thead>
+                    <tr>
+                        <th>Player Postion</th>
+                        <th>Player Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="player in players">
+                        <td> <span ng-bind="player.position"></span> /td>
+                        <td><span ng-bind="player.player_name"></span></td>
+                    </tr>
+                </tbody>
+            </table>
 <div class="ui teal segment">
     <form action="" class="ui form">
         <div class="field">
