@@ -205,7 +205,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
         $scope.team_name = team.team_name;
     });
     $http({ method:"GET", url:'/player/list_player/' + $routeParams.id }).success(function(result){
-        console.log(result.msg);
+        // console.log(result.msg);
         $scope.players = result.msg;
     });
     $scope.enumOptions = ['P', 'C', "1B", "2B", "3B", "SS", "LF", "CF", "RF", "DH"];
@@ -362,15 +362,10 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
         $scope.cur_player = id;
         if($scope.add_stat == true){
             $http({ method:"GET", url:'/records/show_stat/' + $scope.cur_player+'/'+$routeParams.id }).success(function(result){
-                // if(result.msg != "No record"){
-                    console.log(result.msg)
-                    $scope.stat_bf = result.msg;
-                // }
+                $scope.stat_bf = result.msg;
             });
             $http({ method:"GET", url:'/records/show_stat2/' + $scope.cur_player+'/'+$routeParams.id }).success(function(result){
-                // if(result.msg != "No record"){
-                    $scope.stat_p = result.msg;
-                // }
+                $scope.stat_p = result.msg;
             });                  
         }
         $scope.add_stat = !($scope.add_stat);
@@ -419,5 +414,17 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
         else{
             alert("Fill in position!");
         }        
+    }
+    $scope.remove = function(num){
+        if(num == 1){
+            $http({ method:"GET", url:'/records/remove_stat/' + $scope.cur_player+'/'+$routeParams.id }).success(function(result){
+                $window.location.reload();
+            });
+        }
+        else{
+            $http({ method:"GET", url:'/records/remove_stat2/' + $scope.cur_player+'/'+$routeParams.id }).success(function(result){
+                $window.location.reload();
+            });
+        }
     }  
 });

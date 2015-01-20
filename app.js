@@ -77,6 +77,8 @@ app.post('/records/add_stat/:player_id/:game_id', records.add_stat);
 app.get('/records/show_stat/:player_id/:game_id', records.show_stat);
 app.post('/records/add_stat2/:player_id/:game_id', records.add_stat2);
 app.get('/records/show_stat2/:player_id/:game_id', records.show_stat2);
+app.get('/records/remove_stat/:player_id/:game_id', records.remove_stat);
+app.get('/records/remove_stat2/:player_id/:game_id', records.remove_stat2);
 
 app.post('/game/add_game', game.add_game);
 app.get('/game/list_game', game.list_game);

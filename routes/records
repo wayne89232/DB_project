@@ -116,3 +116,25 @@ exports.add_stat2 = function(req, res){
 		
 	});
 }
+
+exports.remove_stat = function(req, res){
+	B_F_record.destroy({
+		where: {
+			player_id: req.params.player_id,
+			game_id: req.params.game_id			
+		}
+	}).then(function(result){
+		res.json({msg: "Clear stat!"});
+	});
+}
+
+exports.remove_stat2 = function(req, res){
+	Pitching_record.destroy({
+		where: {
+			player_id: req.params.player_id,
+			game_id: req.params.game_id			
+		}
+	}).then(function(result){
+		res.json({msg: "Clear stat!"});
+	});
+}

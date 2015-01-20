@@ -21,11 +21,15 @@
             <form>
                 <div class="content content-right">
                     <span>Batting & Fielding Record</span>
+                    <button class="ui button" ng-click="remove(1)">
+                        <i class="remove icon"></i>
+                        <span>Clear Stat</span>
+                    </button>
                     <table class="ui celled table">
                             <tr>
                                 <td>
                                     Position
-                                    <select ng-change="pitch()" ng-model="stat_bf.position" ng-options="o as o for o in enumOptions"></select>
+                                    <select ng-model="stat_bf.position" ng-options="o as o for o in enumOptions"></select>
                                 </td>
                                 <td>TC<input type="text" ng-model="stat_bf.TC"></td>
                                 <td>A<input type="text" ng-model="stat_bf.A"></td>
@@ -56,6 +60,10 @@
                 </div>
                 <div class="content content-right">
                     <span>Pitching Record</span>
+                    <button class="ui button" ng-click="remove(2)">
+                        <i class="remove icon"></i>
+                        <span>Clear Stat</span>
+                    </button>
                     <table class="ui celled table">
                             <tr>
                                 <td>IP<input type="text" ng-model="stat_p.IP"></td>
