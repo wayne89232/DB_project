@@ -111,3 +111,29 @@
   padding-left: 40%;
   padding-top: 3%;
 }
+.booa 
+{
+      -webkit-appearance: none;
+      display: inline-block;
+      font-family: 'Open Sans Condensed', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-decoration: none;
+      background: rgba(0,0,0,.8);
+      color: #fff;
+      border: 0;
+      line-height: 1em;
+      border-radius: 8px;
+      outline: 0;
+      cursor: pointer;
+      -moz-transition: background-color .2s ease-in-out;
+      -webkit-transition: background-color .2s ease-in-out;
+      -o-transition: background-color .2s ease-in-out;
+      -ms-transition: background-color .2s ease-in-out;
+      transition: background-color .2s ease-in-out;
+}
+.tsize
+{
+  width: 70%;
+
+}

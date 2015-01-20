@@ -9,7 +9,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="game in games" ng-click="view(game[0].game_id)">
+                    <tr ng-repeat="game in games" >
                         <td> 
                             <span ng-bind="game[1].team_name"></span>
                         </td>
@@ -22,7 +22,9 @@
                             <span ng-bind="game[2].team_name"></span>
                         </td>
                         <td>
-                             <span>icon</span>
+                             <button class="ui button" ng-click="view(game[0].game_id)">
+                             <i class="content icon "></i>Details
+                             </button>
                         </td>
                     </tr>
                 </tbody>
