@@ -5,7 +5,6 @@ exports.Games = function(Sequelize, sequelize){
     home_team_id: Sequelize.INTEGER,
     away_team_id: Sequelize.INTEGER,
     field_id: Sequelize.INTEGER,
-    broadcast_id: Sequelize.INTEGER,
     home_team_score: Sequelize.INTEGER,
     away_team_score: Sequelize.INTEGER
   },{

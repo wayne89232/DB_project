@@ -314,6 +314,10 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     $http({ method:"GET", url:'/league/list_league' }).success(function(leagues){
         $scope.leagues = leagues.msg;
     });
+    $scope.fields = [];
+    $http({ method:"GET", url:'/field/list_field' }).success(function(fields){
+        $scope.fields = fields.msg;
+    });
     $scope.show_change = function(num){
         if(num != $scope.current){
             $scope.show[$scope.current] = true;
@@ -330,8 +334,8 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     $scope.add_league = function(){
         if($scope.league != null && $scope.city0 != null && $scope.year != null ){
             var data = {
-                league: $scope.league, 
-                city0: $scope.city0,
+                name: $scope.league, 
+                city: $scope.city0,
                 year: $scope.year
             };
             $http({
@@ -350,8 +354,8 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     $scope.add_team = function(){
         if($scope.team1 != null && $scope.school1 != null){
             var data = {
-                team1: $scope.team1, 
-                school1: $scope.school1
+                name: $scope.team1, 
+                school: $scope.school1
             };
             $http({
                 method: "POST", 
@@ -377,7 +381,6 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
                 home_team_id: $scope.home_team,
                 away_team_id: $scope.away_team,
                 field_id: $scope.field,
-                broadcast_id: $scope.broadcast,
                 home_team_score: $scope.home_team_score,
                 away_team_score: $scope.away_team_score
             };
@@ -387,8 +390,8 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
                 data: data1
             }).then(function(result){
                 var data2 = {
-                    game_id: result.game_id,
-                    type2: $scope.type2,
+                    game: result.game_id,
+                    type: $scope.type2,
                     URL: $scope.URL
                 };
                 $http({
@@ -445,7 +448,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
         if($scope.city5 != null && $scope.type5 != null && $scope.distance != null ){
             var data = {
                 city: $scope.city5, 
-                type5: $scope.type5,
+                type: $scope.type5,
                 distance: $scope.distance
             };
             $http({

@@ -1,5 +1,5 @@
 <div class="ui tabular menu">
-	<a class="item" ng-click="show_change(0)">League</a>
+	<a class="active item" ng-click="show_change(0)">League</a>
 	<a class="item" ng-click="show_change(1)">Team</a>
 	<a class="item" ng-click="show_change(2)">Game</a>
 	<a class="item" ng-click="show_change(3)">City</a>
@@ -48,7 +48,7 @@
                     <option value="">Select team</option>
                     <option ng-value="team.team_id" ng-repeat="team in teams" ng-bind="team.team_name"></option>
                 </select>
-                Score<input type="text" ng-model="home_team_score">                
+                Home team Score<input type="text" ng-model="home_team_score">                
             </div>
             <div class="field" ng-hide="league_pick">
                 Away team
@@ -56,10 +56,14 @@
                     <option value="">Select team</option>
                     <option ng-value="team.team_id" ng-repeat="team in teams" ng-bind="team.team_name"></option>
                 </select>               
-                Score<input type="text" ng-model="away_team_score">  
+                Away team Score<input type="text" ng-model="away_team_score">  
             </div>
             <div class="field">
-                Field ID<input type="text" ng-model="field">
+                Field ID
+                <select ng-model="field">
+                    <option value="">Select Field ID</option>
+                    <option ng-value="field.field_id" ng-repeat="field in fields" ng-bind = "field.field_id"></option>
+                </select>
             </div>
             <div class="field">
                 Broadcast Type

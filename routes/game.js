@@ -8,8 +8,7 @@ exports.add_game = function(req, res){
 	    league_id: req.body.league_id,
 	    home_team_id: req.body.home_team_id,
 	    away_team_id: req.body.away_team_id,
-	    field_id: req.body.field,
-	    broadcast_id: req.body.broadcast,
+	    field_id: req.body.field_id,
 	    home_team_score:req.body.home_team_score,
 	    away_team_score: req.body.away_team_score		
 	}).then(function(result){
