@@ -4,7 +4,7 @@
 			<div class="ui vertical demo menu">
 				<div class="item">
 					<div class="ui transparent icon input">
-						<input type="text" placeholder="Search...">
+						<input ng-model="search"  type="text" placeholder="Search...">
 						<i class="search icon"></i>
                     </div>
                 </div>
@@ -18,15 +18,17 @@
     			<thead>
     				<tr>
     					<th>Name</th>
-    					<th>City</th>
+    					<th>Location</th>
     					<th>Year</th>
+    					<th>Detail</th>
     				</tr>
     			</thead>
     			<tbody>
-					<tr ng-repeat="league in leagues">
+					<tr ng-repeat="league in leagues  | filter:search">
 						<td ng-bind = "league.league_name"></td>
 						<td ng-bind = "league.city_id"></td>
 						<td ng-bind = "league.year"></td>
+						<td><a ng-click="view(league.league_id)">Details</a></td>
 					</tr>
 				</tbody>
    			</table>

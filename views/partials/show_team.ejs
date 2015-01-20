@@ -10,3 +10,16 @@ Players:
         <span ng-bind="player.player_name"></span>
     </div>
 </div>
+
+<div class="ui teal segment">
+    <form action="" class="ui form">
+        <div class="field">
+            <span>Add to League</span>
+            <select ng-model="add_league">
+                <option value="">Select league</option>
+                <option ng-value="league.league_id" ng-repeat="league in leagues" ng-bind="league.league_name"></option>
+            </select>
+        </div>
+        <button class="ui button" ng-click="add_to_league()">Go</button>
+    </form>
+</div>
