@@ -1,7 +1,7 @@
 <div class="container">
 <table class=" ui celled table">
     <thead>
-             <tr >
+             <tr>
 
                    <th>Home Team</th>
                    <th>Score</th>
@@ -23,14 +23,21 @@
 </table>
 
 
-    <div style = "float: left">
-        <span ng-bind="home_team.team_name"></span>
-        <div ng-repeat="player in home_players">
-            <i ng-click="stats2(player.player_id)">icon</i>
-            <div ng-bind="player.player_name"  ng-click="stats(player.player_id)"></div>
-        </div>
+    <div class="wordtype" style = "float: left" >
+        <p>Home Team :<span ng-bind="home_team.team_name"></span></p>
+        <p>player list</p>
+        <span ng-repeat="player in home_players">
+           
+            <p> Player : <span ng-bind="player.player_name" ></span></p>
+            <button class="ui button" ng-click="stats(player.player_id)">
+                             <i class="content icon "></i>Record
+             </button>
+             <button class="ui button"  ng-click="stats2(player.player_id)">
+                             <i class="content icon "></i>Update
+             </button>
+        </span>
     </div>
-    <div class="" ng-hide="add_stat" style="float: left; width: 600px; margin-left: 200px">
+    <div class="" ng-hide="add_stat" style="float: left; width: 600px; margin-left:80px">
         
         <div class="content content-right">
             <form>
@@ -98,7 +105,7 @@
             </form>
         </div>
     </div>
-    <div class="" ng-hide="hide_stat" style="float: left; width: 600px; margin-left: 200px">
+    <div class="" ng-hide="hide_stat" style="float: left; width: 600px; margin-left:80px">
         <div class="content content-right">
             <span>Batting & Fielding Record</span>
             <table class="ui celled table">
@@ -155,15 +162,19 @@
             </table>
         </div>        
     </div>    
-    <div style = "float: right">
-        <span ng-bind="away_team.team_name"></span>
-        <div ng-repeat="player in away_players">
-            <i ng-click="stats2(player.player_id)">icon</i>
-            <div ng-bind="player.player_name" ng-click="stats(player.player_id)"></div>
+    <div  class="wordtype" style = "float: right" >
+       <p>Away Team: <span ng-bind="away_team.team_name"></span></p>
+       <p>player list</p>
+        <span ng-repeat="player in away_players">
+            <p> Player : <span ng-bind="player.player_name" ></span></p>
+            <button class="ui button" ng-click="stats(player.player_id)">
+                             <i class="content icon "></i>Record
+             </button>
+             <button class="ui button"  ng-click="stats2(player.player_id)">
+                             <i class="content icon "></i>Update
+             </button>
 
-        </div>
+        </span>
     </div>
-
-
 
 </div>
