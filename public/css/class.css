@@ -131,6 +131,7 @@
       -o-transition: background-color .2s ease-in-out;
       -ms-transition: background-color .2s ease-in-out;
       transition: background-color .2s ease-in-out;
+      float: right;
 }
 .tsize
 {
@@ -145,4 +146,29 @@
   font-size: 110%;
   margin: 0 auto;
 
+}
+.marrg
+{
+  margin-left: 90%; 
+  margin-right:0px;
+  padding-right: 0px;
+}
+.marrgr
+{
+  margin-left: 53%; 
+  
+}
+.marmid
+{
+   margin-left: 38.5%;
+
+}
+.marmid1
+{
+   margin-left: 20%;
+
+}
+.heigh
+{
+  height: 3em;
 }

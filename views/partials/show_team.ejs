@@ -1,11 +1,26 @@
-<div ng-bind="team_name"></div>
+<p class="wordtype marmid" style="font-size:150%">Team Information : Team - <span ng-bind="team_name"></span>  </p>
 <div class="ui center aligned segment">
   	<div class="ui">
 		<div class="leftm">
 			<table class="ui celled table tsize ">
 		        <thead>
+                    <tr class="tableform"><th>Enter League </th></tr>
+                    <tr><td>
+                <div class="ui">
+                    <form action="" class="ui form">    
+                        <div class="field">
+                            <select  ng-model="add_league">
+                                <option value="">Select league</option>
+                                <option ng-value="league.league_id" ng-repeat="league in leagues" ng-bind="league.league_name"></option>
+                            </select>
+                        </div>
+                        <button class="ui button" ng-click="add_to_league()">Go</button>
+                    </form>
+                </div>
+            </td></tr>
+
 		            <tr class="tableform">
-						<th>League Participated</th>
+                        <th>League Participated</th>
 		            </tr>
 				</thead>
 				<tbody>
@@ -19,20 +34,29 @@
 			</table>
 		</div>
 		<div class="rightm">
-			<table class="ui celled table ">
+			<table class="ui celled table tsize">
 		        <thead>
 		            <tr>
-		                  <th class="tableform" colspan="2">Player Information</th>
+		                  <th class="tableform" colspan="6">Player Information
+                          </th>
 		            </tr>                    
 		            <tr>
-		                <th>Player Postion</th>
-		                <th>Player Name</th>
+		                <th>Name</th>
+                        <th>Postion</th>
+                        <th>Age</th>
+                        <th>Height</th>
+                        <th>Weight</th>
+                        <th>Batting</th>
 		            </tr>
 		        </thead>
 		        <tbody>
 		            <tr ng-repeat="player in players">
-		                <td> <span ng-bind="player.position"></span> </td>
-		                <td><span ng-bind="player.player_name"></span></td>
+		                <td> <span ng-bind="player.player_name"></span> </td>
+                        <td><span ng-bind="player.position"></span></td>
+                        <td><span ng-bind="player.age"></span></td>
+                        <td><span ng-bind="player.height"></span></td>
+                        <td><span ng-bind="player.weight"></span></td>
+                        <td><span ng-bind="player.batting"></span></td>
 		            </tr>
 		        </tbody>
 			</table>
@@ -40,12 +64,12 @@
   	</div>
 
   	
-  	<div class="ui teal leftm">
-  		<table class="ui celled table ">
-  			<thead><th class="tableform"><span class="ui header">Enter League</span></th></thead>
+  	<!-- <div class="ui teal leftm" width="60%">
+  		<table class="ui celled table tsize wordtype" >
+  			<thead><th class="tableform"><span class="ui header wordtype" style="font-size:80%">Enter League</span></th></thead>
 			<tbody><tr><td>
 				<div class="ui">
-				    <form action="" class="ui form">
+				    <form action="" class="ui form">    
 				        <div class="field">
 				            <select ng-model="add_league">
 				                <option value="">Select league</option>
@@ -57,12 +81,15 @@
 				</div>
 			</td></tr></tbody>
 		</table>
-  	</div>
-  	<button class="ui button" ng-click="reveal_add_player()">Add player</button>
-    <div ng-hide="player_add">
+  	</div> -->
+     <div class="marrg" >
+  <button  class=" marrg ui button"   ng-click="reveal_add_player()" >Add player</button>
+  </div>
+   
+    <div ng-hide="player_add" class="marmid1">
         <form action="" class="ui form">
-            <div class="field">
-                <span>Add Player</span>
+            <div class="field addingb mid">
+                <span class="wordtype">Add Player</span>
                 <div class="field">
                     Name<input type="text" ng-model="player_name">
                 </div>
@@ -84,7 +111,7 @@
                     <select ng-model="batting" ng-options="a as a for a in enumOptions2"></select>
                 </div>                                    
             </div>
-            <button class="ui button" ng-click="add_player()">Go</button>
+           <div class="marrgr"> <button class="ui button " ng-click="add_player()">Go</button></div>
         </form>
     </div>
 
