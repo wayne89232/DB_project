@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function ($scope, $http) {
+angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function ($scope, $http, $location) {
     $scope.games = [];    
     $http({ method:"GET", url:'/team/list_team' }).success(function(teams){
         $scope.teams = teams.msg;
@@ -131,7 +131,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
         $scope.team_name = team.team_name;
     });
     $http({ method:"GET", url:'/player/list_player/' + $routeParams.id }).success(function(result){
-        // console.log(result.msg);
+        console.log(result.msg);
         $scope.players = result.msg;
     });
     $scope.enumOptions = ['P', 'C', "1B", "2B", "3B", "SS", "LF", "CF", "RF", "DH"];
