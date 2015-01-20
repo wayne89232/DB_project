@@ -15,7 +15,7 @@ config(function ($routeProvider, $locationProvider) {
     }).
     when('/add', {
       templateUrl: 'partials/add',
-      controller: 'AppCtrl'
+      controller: 'Add'
     }).
     when('/League', {
       templateUrl: 'partials/league',
@@ -28,6 +28,10 @@ config(function ($routeProvider, $locationProvider) {
     when('/Game', {
       templateUrl: 'partials/game_list',
       controller: 'Game'
+    }).
+    when('/Details', {
+      templateUrl: 'partials/details',
+      controller: 'Details'
     }).
     when('/School', {
       templateUrl: 'partials/school',
@@ -72,26 +76,6 @@ config(function ($routeProvider, $locationProvider) {
     .when('/add_team', {
       templateUrl: 'partials/add_team',
       controller: 'Team'
-    })
-    .when('/add_school', {
-      templateUrl: 'partials/add_school',
-      controller: 'School'
-    })
-    .when('/add_city', {
-      templateUrl: 'partials/add_city',
-      controller: 'City'
-    })
-    .when('/add_ban', {
-      templateUrl: 'partials/add_ban',
-      controller: 'Ban'
-    })
-    .when('/add_field', {
-      templateUrl: 'partials/add_field',
-      controller: 'Field'
-    })
-    .when('/add_umpire', {
-      templateUrl: 'partials/add_umpire',
-      controller: 'Umpire'
     })
     .otherwise({
       redirectTo: '/home'

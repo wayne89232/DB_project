@@ -35,132 +35,6 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     $scope.view = function(id){
         $location.path('/league/'+id);
     }
-}).controller('City', function ($scope, $http, $location, $window) {
-    $scope.cities = [];
-    $http({ method:"GET", url:'/city/list_city' }).success(function(cities){
-        $scope.cities = cities.msg;
-    });
-    $scope.add_city = function(){
-        if($scope.name != null){
-            var data = {
-                name: $scope.name
-            };
-            $http({
-                method: "POST", 
-                url: '/api/add_city', 
-                data: data
-            }).then(function(result){
-                $window.location.reload();
-                $location.path('/add_city');
-            });
-        }
-        else{
-            alert("Fill in all entities!");
-        }
-    }
-}).controller('Field', function ($scope, $http, $location, $window) {
-    $scope.fields = [];
-    $http({ method:"GET", url:'/field/list_field' }).success(function(fields){
-        $scope.fields = fields.msg;
-    });
-    $scope.add_field = function(){
-        if($scope.city != null && $scope.type != null && $scope.distance != null ){
-            var data = {
-                city: $scope.city, 
-                type: $scope.type,
-                distance: $scope.distance
-            };
-            $http({
-                method: "POST", 
-                url: '/api/add_field', 
-                data: data
-            }).then(function(result){
-                $window.location.reload();
-                $location.path('/add_field');
-            });
-        }
-        else{
-            alert("Fill in all entities!");
-        }
-    }
-}).controller('School', function ($scope, $http, $location, $window) {
-    $scope.schools = [];
-    $http({ method:"GET", url:'/school/list_school' }).success(function(schools){
-        $scope.schools = schools.msg;
-    });
-    $scope.add_school = function(){
-        if($scope.name != null){
-            var data = {
-                name: $scope.name
-            };
-            $http({
-                method: "POST", 
-                url: '/api/add_school', 
-                data: data
-            }).then(function(result){
-                $window.location.reload();
-                $location.path('/add_school');
-            });
-        }
-        else{
-            alert("Fill in all entities!");
-        }
-    }
-}).controller('Ban', function ($scope, $http, $location, $window) {
-    $scope.bans = [];
-    $http({ method:"GET", url:'/ban/list_ban' }).success(function(bans){
-        $scope.bans = bans.msg;
-    });
-    $scope.add_ban = function(){
-        if($scope.player != null && $scope.game != null && $scope.num != null && $scope.description != null ){
-            var data = {
-                player: $scope.player,
-                game: $scope.game,
-                num: $scope.num,
-                description: $scope.description
-            };
-            $http({
-                method: "POST", 
-                url: '/api/add_ban', 
-                data: data
-            }).then(function(result){
-                $window.location.reload();
-                $location.path('/add_ban');
-            });
-        }
-        else{
-            alert("Fill in all entities!");
-        }
-    }
-}).controller('Umpire', function ($scope, $http, $location, $window) {
-    $scope.umpires = [];
-    $http({ method:"GET", url:'/umpire/list_umpire' }).success(function(umpires){
-        $scope.umpires = umpires.msg;
-    });
-    $scope.add_umpire = function(){
-        if($scope.umpire != null && $scope.position != null){
-            var data = {
-                umpire: $scope.umpire, 
-                position: $scope.position
-            };
-            $http({
-                method: "POST", 
-                url: '/api/add_umpire', 
-                data: data
-            }).then(function(result){
-                $window.location.reload();
-                $location.path('/add_umpire');
-            });
-        }
-        else{
-            alert("Fill in all entities!");
-        }
-    }
-}).controller('Broadcast', function ($scope, $http, $location, $window) {
-    $scope.broadcasts = [];
-    $http({ method:"GET", url:'/broadcast/list_broadcast' }).success(function(broadcasts){
-        $scope.broadcasts = broadcasts.msg;
-    });
 }).controller('Team', function ($scope, $http, $location, $window) {
     $scope.team_list = [];
     $scope.team_add = true;
@@ -432,4 +306,152 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
             });
         }
     }  
+}).controller('Add', function ($scope, $http, $location, $window) {
+    $scope.current = 0;
+    $scope.show = [false, true, true, true, true, true, true, true];
+
+    $scope.show_change = function(num){
+        if(num != $scope.current){
+            $scope.show[$scope.current] = true;
+            $scope.show[num] = false;
+            $scope.current = num;
+        }
+    }
+    $scope.add_city = function(){
+        if($scope.city3 != null){
+            var data = {
+                name: $scope.city3
+            };
+            $http({
+                method: "POST", 
+                url: '/api/add_city', 
+                data: data
+            }).then(function(result){
+                $window.location.reload();
+                $location.path('/add');
+            });
+        }
+        else{
+            alert("Fill in all entities!");
+        }
+    }
+    $scope.add_school = function(){
+        if($scope.school != null){
+            var data = {
+                name: $scope.school
+            };
+            $http({
+                method: "POST", 
+                url: '/api/add_school', 
+                data: data
+            }).then(function(result){
+                $window.location.reload();
+                $location.path('/add');
+            });
+        }
+        else{
+            alert("Fill in all entities!");
+        }
+    }
+    $scope.add_field = function(){
+        if($scope.city5 != null && $scope.type != null && $scope.distance != null ){
+            var data = {
+                city: $scope.city5, 
+                type: $scope.type,
+                distance: $scope.distance
+            };
+            $http({
+                method: "POST", 
+                url: '/api/add_field', 
+                data: data
+            }).then(function(result){
+                $window.location.reload();
+                $location.path('/add');
+            });
+        }
+        else{
+            alert("Fill in all entities!");
+        }
+    }
+    $scope.add_ban = function(){
+        if($scope.player6 != null && $scope.game6 != null && $scope.num != null && $scope.description != null ){
+            var data = {
+                player: $scope.player6,
+                game: $scope.game6,
+                num: $scope.num,
+                description: $scope.description
+            };
+            $http({
+                method: "POST", 
+                url: '/api/add_ban', 
+                data: data
+            }).then(function(result){
+                $window.location.reload();
+                $location.path('/add_ban');
+            });
+        }
+        else{
+            alert("Fill in all entities!");
+        }
+    }
+    $scope.add_umpire = function(){
+        if($scope.umpire != null && $scope.position != null){
+            var data = {
+                umpire: $scope.umpire, 
+                position: $scope.position
+            };
+            $http({
+                method: "POST", 
+                url: '/api/add_umpire', 
+                data: data
+            }).then(function(result){
+                $window.location.reload();
+                $location.path('/add_umpire');
+            });
+        }
+        else{
+            alert("Fill in all entities!");
+        }
+    }
+}).controller('Details', function ($scope, $http, $location, $window) {
+    $scope.current = 0;
+    $scope.show = [false, true, true, true, true, true];
+
+    $scope.cities = [];
+    $http({ method:"GET", url:'/city/list_city' }).success(function(cities){
+        $scope.cities = cities.msg;
+    });
+
+    $scope.schools = [];
+    $http({ method:"GET", url:'/school/list_school' }).success(function(schools){
+        $scope.schools = schools.msg;
+    });
+
+    $scope.fields = [];
+    $http({ method:"GET", url:'/field/list_field' }).success(function(fields){
+        $scope.fields = fields.msg;
+    });
+
+    $scope.bans = [];
+    $http({ method:"GET", url:'/ban/list_ban' }).success(function(bans){
+        $scope.bans = bans.msg;
+    });
+
+    $scope.umpires = [];
+    $http({ method:"GET", url:'/umpire/list_umpire' }).success(function(umpires){
+        $scope.umpires = umpires.msg;
+    });
+
+    $scope.broadcasts = [];
+    $http({ method:"GET", url:'/broadcast/list_broadcast' }).success(function(broadcasts){
+        $scope.broadcasts = broadcasts.msg;
+    });
+
+    $scope.show_change = function(num){
+        if(num != $scope.current){
+            $scope.show[$scope.current] = true;
+            $scope.show[num] = false;
+            $scope.current = num;
+        }
+    }
 });

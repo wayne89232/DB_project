@@ -11,23 +11,20 @@
 			</div>
 		</div>
 	</div>
-	<div class="9u">
-	
-		<div class="content content-right partialright">
-    		<table class="ui celled table ">
-    			<thead>
-    				<tr>
-    					<th>CityID</th>
-    					<th>CityName</th>
-    				</tr>
-    			</thead>
-    			<tbody>
-					<tr ng-repeat="city in cities">
-						<td ng-bind = "city.city_id"></td>
-						<td ng-bind = "city.city_name"></td>
-					</tr>
-				</tbody>
-   			</table>
-    	</div>
+	<div class="9u content content-right partialright">
+    	<table class="ui celled table ">
+    		<thead>
+    			<tr>
+    				<th>CityID</th>
+    				<th>CityName</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+				<tr ng-repeat="city in cities">
+					<td ng-bind = "city.city_id"></td>
+					<td ng-bind = "city.city_name"></td>
+				</tr>
+			</tbody>
+   		</table>
 	</div>
 </div>
