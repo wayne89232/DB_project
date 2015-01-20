@@ -28,6 +28,18 @@ exports.list_team_by_league = function(req, res){
 	});
 }
 
+exports.out_league = function(req, res){
+	console.log(req.params.league_id);
+	League_team.destroy({
+		where: {
+			league_id: req.params.league_id,
+			team_id: req.params.team_id			
+		}
+	}).then(function(result){
+		res.json({msg: "Get out of league!"});
+	});
+}
+
 exports.show_team = function(req, res){
 	Team.find({ where:{ team_id: req.params.team_id } }).then(function(result){
 		res.json({ msg: result.dataValues });

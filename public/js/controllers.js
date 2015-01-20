@@ -257,6 +257,11 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     $scope.reveal_add_player = function(){
         $scope.player_add = !($scope.player_add);
     }
+    $scope.out = function(league){
+        $http({ method:"GET", url:'/team/out_league/' + $routeParams.id + '/' + league}).success(function(result){
+            $window.location.reload();
+        });
+    }
 }).controller('Game', function ($scope, $http, $location, $window, $routeParams) {
     $scope.leagues = [];
     $scope.games = [];    

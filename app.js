@@ -65,6 +65,7 @@ app.get('/team/show_team/:team_id', team.show_team);
 app.get('/team/team_league/:team_id', team.team_league);
 app.post('/team/add_to_league/:team_id/:league_id', team.add_to_league);
 app.get('/team/list_team_by_league/:league_id', team.list_team_by_league);
+app.get('/team/out_league/:team_id/:league_id', team.out_league);
 
 app.get('/league/list_league', league.list_league);
 app.get('/league/show_league/:league_id', league.show_league);
