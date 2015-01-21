@@ -32,7 +32,6 @@ exports.add_stat = function(req, res){
 			PSS: req.body.PSS	
 		}
 	}).then(function(result){
-		console.log(result)
 		result[0].updateAttributes({
 			position: req.body.position,
 			TC: req.body.TC,

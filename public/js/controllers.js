@@ -354,7 +354,6 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     }
     $scope.add_stats = function(){
         if($scope.stat_bf.position != null ){
-                console.log($scope.stat_bf.A)
             var data = {
                 position: $scope.stat_bf.position,
                 TC: $scope.stat_bf.TC,
