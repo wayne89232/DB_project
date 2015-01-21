@@ -354,6 +354,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     }
     $scope.add_stats = function(){
         if($scope.stat_bf.position != null ){
+                console.log($scope.stat_bf.A)
             var data = {
                 position: $scope.stat_bf.position,
                 TC: $scope.stat_bf.TC,
@@ -374,9 +375,9 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
                 IP: $scope.stat_p.IP,
                 W: $scope.stat_p.W,
                 L: $scope.stat_p.L,
-                H2: $scope.stat_p.H2,
+                H: $scope.stat_p.H,
                 SV: $scope.stat_p.SV,
-                BB_HP2: $scope.stat_p.BB_HP2,
+                BB_HP: $scope.stat_p.BB_HP,
                 ER: $scope.stat_p.ER
             };
             $http({

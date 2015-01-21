@@ -38,7 +38,6 @@ exports.list_game_by_league = function(req, res){
 	});
 }
 exports.show_game = function(req, res){
-	console.log(req.params.game_id);
 	Games.find( {where:{ game_id: req.params.game_id} }).then(function(game){
 		res.json({ msg: game.dataValues });
 	});
