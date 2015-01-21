@@ -97,18 +97,18 @@ exports.add_stat2 = function(req, res){
 			IP: req.body.IP,
 			W: req.body.W,
 			L: req.body.L,
-			H: req.body.H2,
+			H: req.body.H,
 			SV: req.body.SV,
-			BB_HP: req.body.BB_HP2,
+			BB_HP: req.body.BB_HP,
 			ER: req.body.ER	
 	}}).then(function(result){
 		result[0].updateAttributes({
 			IP: req.body.IP,
 			W: req.body.W,
 			L: req.body.L,
-			H: req.body.H2,
+			H: req.body.H,
 			SV: req.body.SV,
-			BB_HP: req.body.BB_HP2,
+			BB_HP: req.body.BB_HP,
 			ER: req.body.ER			
 		}).then(function(){
 			res.json({ msg: "Success on creating record "});	
